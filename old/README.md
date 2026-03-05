@@ -1,2 +1,0 @@
-# mpapetv
-# lfcjahi-media
