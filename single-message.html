@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="keywords" content="LFC-JAHI MEDIA, Sermon, Audio Message" />
+  <meta name="description" content="LFC-JAHI MEDIA single audio message page" />
+  <meta name="author" content="LFC-JAHI MEDIA" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title id="pageTitle">Message Detail | LFC-JAHI MEDIA</title>
+  <link rel="shortcut icon" href="images/favicon.png">
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/lfc-jahi-media.css" />
+</head>
+
+<body>
+  <div id="gen-loading">
+    <div id="gen-loading-center">
+      <img src="images/logo-1.png" alt="loading">
+    </div>
+  </div>
+
+  <header id="gen-header" class="gen-header-style-1 gen-has-sticky">
+    <div class="gen-bottom-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg navbar-light">
+              <a class="navbar-brand" href="index.html">
+                <img class="img-fluid logo" src="images/logo-1.png" alt="LFC-JAHI MEDIA logo">
+              </a>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div id="gen-menu-contain" class="gen-menu-contain">
+                  <ul id="gen-main-menu" class="navbar-nav ml-auto">
+                    <li class="menu-item"><a href="index.html">Home</a></li>
+                    <li class="menu-item active"><a href="single-message.html">Message Detail</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="gen-header-info-box">
+                <div class="gen-btn-container">
+                  <a href="index.html#message-library" class="gen-button">
+                    <div class="gen-button-block">
+                      <span class="gen-button-line-left"></span>
+                      <span class="gen-button-text">Back to Library</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+              </button>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="lfc-single-hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <div class="gen-tag-line"><span>MESSAGE DETAILS</span></div>
+          <h1 id="messageTitle" class="text-white">Message Title</h1>
+          <div class="gen-movie-meta-holder">
+            <ul class="gen-meta-after-title">
+              <li><i class="far fa-calendar-alt"></i> <span id="messageDate">Date</span></li>
+              <li><i class="far fa-clock"></i> <span id="messageDuration">Duration</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gen-section-padding-2 lfc-single-wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mb-4">
+          <div class="lfc-single-card">
+            <img id="messageImage" class="lfc-single-image" src="images/background/asset-14.jpeg" alt="Message image">
+            <audio id="audioPlayer" class="lfc-audio" controls preload="none">
+              Your browser does not support the audio element.
+            </audio>
+            <div class="gen-movie-action mb-4">
+              <div class="gen-btn-container mr-3 d-inline-block">
+                <a id="downloadMessage" href="#" class="gen-button" download>
+                  <i class="fa fa-download"></i>
+                  <span class="text">Download Message</span>
+                </a>
+              </div>
+              <div class="gen-btn-container d-inline-block">
+                <button id="copyMessageLink" class="gen-button gen-button-flat" type="button">
+                  <span class="text">Copy Message Link</span>
+                </button>
+              </div>
+            </div>
+            <h4 class="text-white">Description</h4>
+            <p id="messageDescription" class="lfc-description mb-0">Message description</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 mb-4">
+          <div class="lfc-single-card">
+            <span class="lfc-pastor-chip" id="messagePastorChip">Pastor Name</span>
+            <h5 class="text-white mb-3">Message Information</h5>
+            <ul class="lfc-meta-list">
+              <li><strong>Pastor:</strong><span id="metaPastor">Pastor Name</span></li>
+              <li><strong>Date:</strong><span id="metaDate">Date</span></li>
+              <li><strong>Duration:</strong><span id="metaDuration">Duration</span></li>
+              <li><strong>Series:</strong><span id="messageSeries">Series Name</span></li>
+              <li><strong>Key Scripture:</strong><span id="messageScripture">Scripture</span></li>
+            </ul>
+            <div class="gen-btn-container mt-4">
+              <a id="browseByPastor" href="index.html" class="gen-button gen-button-flat">
+                <span class="text">More From This Pastor</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gen-section-padding-3 pt-0">
+    <div class="container">
+      <div class="row mb-3">
+        <div class="col-lg-12">
+          <h4 class="gen-heading-title">More Messages</h4>
+        </div>
+      </div>
+      <div id="relatedMessages" class="row"></div>
+    </div>
+  </section>
+
+  <footer id="gen-footer">
+    <div class="gen-footer-style-1">
+      <div class="gen-copyright-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 align-self-center">
+              <span class="gen-copyright">Copyright 2026 LFC-JAHI MEDIA. All rights reserved.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="back-to-top">
+    <a class="top" id="top" href="#top"><i class="ion-ios-arrow-up"></i></a>
+  </div>
+
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script src="js/asyncloader.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/streamlab-core.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/messages-data.js"></script>
+  <script src="js/lfc-single-message.js"></script>
+</body>
+
+</html>
