@@ -190,6 +190,76 @@ body {
   transform: translateY(-3px);
 }
 
+.lfc-districts-table {
+  border-radius: 10px;
+  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.lfc-districts-table .table {
+  background-color: var(--lfc-surface);
+  margin-bottom: 0;
+  border-collapse: collapse;
+  min-width: 100%;
+}
+
+.lfc-districts-table .table thead {
+  background-color: var(--lfc-surface-alt);
+  border-bottom: 2px solid var(--lfc-border);
+}
+
+.lfc-districts-table .table thead th {
+  color: var(--lfc-accent);
+  font-weight: 600;
+  border: 1px solid var(--lfc-border);
+  padding: 18px 15px;
+  white-space: nowrap;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.lfc-districts-table .table tbody td {
+  color: #ddd;
+  border: 1px solid var(--lfc-border);
+  padding: 16px 15px;
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+.lfc-districts-table .table tbody tr {
+  transition: background-color 0.25s ease;
+}
+
+.lfc-districts-table .table tbody tr:hover {
+  background-color: var(--lfc-surface-alt);
+}
+
+.lfc-districts-table .table tbody tr:nth-child(even) {
+  background-color: rgba(20, 20, 20, 0.5);
+}
+
+.lfc-districts-table .table tbody tr:nth-child(even):hover {
+  background-color: var(--lfc-surface-alt);
+}
+
+.lfc-districts-table .table tbody tr td strong {
+  color: var(--lfc-accent);
+  font-weight: 600;
+}
+
+.lfc-districts-table .table tbody tr td small {
+  display: block;
+  color: var(--lfc-muted);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.lfc-single-card-section {
+  margin-top: 40px;
+}
+
 @media (max-width: 767px) {
   .lfc-hero {
     padding: 120px 0 70px;
