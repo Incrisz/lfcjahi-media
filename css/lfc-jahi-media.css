@@ -260,6 +260,37 @@ body {
   margin-top: 40px;
 }
 
+@media (max-width: 1023px) {
+  header#gen-header .gen-bottom-header .navbar-toggler,
+  header#gen-header .gen-bottom-header .navbar-light .navbar-toggler {
+    background: #fff !important;
+    border: 2px solid #fff !important;
+    color: var(--lfc-accent) !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    position: relative;
+    z-index: 1001;
+  }
+
+  header#gen-header .gen-bottom-header .navbar-toggler i,
+  header#gen-header .gen-bottom-header .navbar-toggler .fa-bars {
+    color: var(--lfc-accent) !important;
+  }
+
+  header#gen-header .gen-bottom-header .navbar-toggler:hover,
+  header#gen-header .gen-bottom-header .navbar-toggler:focus,
+  header#gen-header .gen-bottom-header .navbar-toggler[aria-expanded="true"] {
+    background: #fff !important;
+    border-color: #fff !important;
+    color: var(--lfc-accent) !important;
+  }
+
+  header#gen-header .gen-bottom-header .navbar-toggler[aria-expanded="true"] i,
+  header#gen-header .gen-bottom-header .navbar-toggler[aria-expanded="true"] .fa-bars {
+    color: var(--lfc-accent) !important;
+  }
+}
+
 .lfc-search-box {
   position: relative;
 }
@@ -426,4 +457,399 @@ body {
   .lfc-card-link .gen-movie-img img {
     height: 260px;
   }
+}
+
+/* ============================================
+   THEME TOGGLE - Light/Dark Mode Styles
+   ============================================ */
+
+/* Light Mode Styles (default when toggled) */
+html:not([data-dark-mode="true"]) {
+  --lfc-surface: #ffffff;
+  --lfc-surface-alt: #f5f5f5;
+  --lfc-border: #e0e0e0;
+  --lfc-muted: #666666;
+}
+
+html:not([data-dark-mode="true"]) body {
+  background-color: #ffffff !important;
+  color: #333333;
+}
+
+html:not([data-dark-mode="true"]) .gen-header-style-1 {
+  background-color: #ffffff !important;
+  border-color: #e0e0e0;
+}
+
+html:not([data-dark-mode="true"]) input,
+html:not([data-dark-mode="true"]) textarea,
+html:not([data-dark-mode="true"]) select {
+  background-color: #ffffff !important;
+  color: #333333 !important;
+  border-color: #e0e0e0 !important;
+}
+
+html:not([data-dark-mode="true"]) .card {
+  background-color: #ffffff !important;
+  border-color: #e0e0e0 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-filter-card {
+  background: #ffffff !important;
+  border-color: #e0e0e0 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-filter-card .form-control,
+html:not([data-dark-mode="true"]) .lfc-filter-card .custom-select {
+  background-color: #f5f5f5 !important;
+  color: #333333 !important;
+  border-color: #e0e0e0 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-empty {
+  background: #ffffff !important;
+  border-color: #e0e0e0 !important;
+}
+
+/* Message cards - Always dark mode */
+.gen-movie-contain {
+  background-color: #141414 !important;
+  border-color: #2a2a2a !important;
+}
+
+.gen-info-contain h3,
+.gen-info-contain h3 a,
+.gen-movie-contain h3,
+.gen-movie-contain h4 {
+  color: #ffffff !important;
+}
+
+.lfc-card-note {
+  color: #cccccc !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-count {
+  color: #666666 !important;
+}
+
+html:not([data-dark-mode="true"]) .gen-nav-info span,
+html:not([data-dark-mode="true"]) .gen-nav-info p {
+  color: #666666 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-featured-card .text-white,
+html:not([data-dark-mode="true"]) .lfc-featured-content h3 {
+  color: #333333 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-featured-content p {
+  color: #333333 !important;
+}
+
+.gen-footer .widget p {
+  color: #ffffff !important;
+}
+
+/* Footer - Always dark mode */
+#gen-footer,
+.gen-footer,
+.gen-footer-style-1 {
+  background-color: #1a1a1a !important;
+  border-color: #333333 !important;
+}
+
+.gen-footer .widget h4,
+.gen-footer .footer-title {
+  color: #ffffff !important;
+}
+
+.gen-footer .menu-item a {
+  color: #cccccc !important;
+}
+
+.gen-footer .menu-item a:hover {
+  color: #e50914 !important;
+}
+
+.gen-copyright-footer {
+  background-color: #141414 !important;
+}
+
+.gen-copyright {
+  color: #888888 !important;
+}
+
+/* Hero section - Always keep text white (dark background) */
+.lfc-hero .gen-tag-line span,
+.lfc-hero h1,
+.lfc-hero .text-white,
+.lfc-hero p.text-white {
+  color: #ffffff !important;
+}
+
+/* Desktop menu only - Light mode changes */
+@media (min-width: 992px) {
+  html:not([data-dark-mode="true"]) #gen-main-menu .menu-item a,
+  html:not([data-dark-mode="true"]) .navbar-nav .menu-item a,
+  html:not([data-dark-mode="true"]) .gen-menu-contain a {
+    color: #333333 !important;
+  }
+
+  html:not([data-dark-mode="true"]) #gen-main-menu .menu-item a:hover,
+  html:not([data-dark-mode="true"]) .navbar-nav .menu-item a:hover,
+  html:not([data-dark-mode="true"]) .gen-menu-contain a:hover {
+    color: #e50914 !important;
+  }
+}
+
+/* Mobile menu - Always maintain original dark styling */
+@media (max-width: 991px) {
+  #gen-main-menu .menu-item a,
+  .navbar-nav .menu-item a,
+  .gen-menu-contain a {
+    color: #ffffff !important;
+  }
+
+  #gen-main-menu .menu-item a:hover,
+  .navbar-nav .menu-item a:hover,
+  .gen-menu-contain a:hover {
+    color: #e50914 !important;
+  }
+
+  .navbar-collapse {
+    background-color: #1a1a1a !important;
+  }
+}
+
+/* Light Mode - Tables */
+html:not([data-dark-mode="true"]) .lfc-districts-table .table {
+  background-color: #ffffff !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-districts-table .table thead {
+  background-color: #f5f5f5 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-districts-table .table tbody td {
+  color: #333333 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-districts-table .table tbody tr:nth-child(even) {
+  background-color: #f9f9f9 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-districts-table .table tbody tr:hover {
+  background-color: #f0f0f0 !important;
+}
+
+/* Light Mode - Home Cell Cards */
+html:not([data-dark-mode="true"]) .lfc-cell-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%) !important;
+  border-color: #e0e0e0 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-cell-card h5 {
+  color: #333333 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-cell-card p {
+  color: #555555 !important;
+}
+
+/* Light Mode - Single Message */
+html:not([data-dark-mode="true"]) .lfc-single-card {
+  background: #ffffff !important;
+  border-color: #e0e0e0 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-single-card .text-white,
+html:not([data-dark-mode="true"]) .lfc-single-card h4 {
+  color: #333333 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-single-card p {
+  color: #444444 !important;
+}
+
+html:not([data-dark-mode="true"]) .gen-heading-title {
+  color: #333333 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-meta-list li {
+  border-color: #e0e0e0 !important;
+  color: #666666 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-meta-list strong {
+  color: #333333 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-description {
+  color: #333333 !important;
+}
+
+/* Light Mode - Home Cells Page Specific */
+html:not([data-dark-mode="true"]) .lfc-info-group {
+  background-color: rgba(229, 9, 20, 0.08) !important;
+  border-left-color: #e50914 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-info-value {
+  color: #333333 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-cells-table .table thead {
+  background-color: #f5f5f5 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-cells-table .table thead th {
+  border-color: #e0e0e0 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-cells-table .table tbody td {
+  color: #333333 !important;
+  border-color: #e0e0e0 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-cells-table .table tbody tr td strong {
+  color: #222222 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-cells-table .table tbody tr:hover {
+  background-color: rgba(229, 9, 20, 0.08) !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-zone-section {
+  background-color: rgba(229, 9, 20, 0.06) !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-search-box .form-control {
+  background-color: #ffffff !important;
+  color: #333333 !important;
+  border-color: #e50914 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-search-box .form-control:focus {
+  background-color: #ffffff !important;
+  color: #333333 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-search-box .form-control::placeholder {
+  color: #888888 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-search-hint {
+  color: #666666 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-no-results {
+  background: linear-gradient(135deg, rgba(229, 9, 20, 0.1) 0%, rgba(229, 9, 20, 0.05) 100%) !important;
+  border-color: #e0e0e0 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-no-results p {
+  color: #555555 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-filter-buttons button {
+  background-color: #ffffff !important;
+  color: #e50914 !important;
+  border-color: #e50914 !important;
+}
+
+html:not([data-dark-mode="true"]) .lfc-filter-buttons button:hover,
+html:not([data-dark-mode="true"]) .lfc-filter-buttons button.active {
+  background-color: #e50914 !important;
+  color: #ffffff !important;
+}
+
+/* Dark Mode Styles */
+html[data-dark-mode="true"] {
+  --lfc-surface: #141414;
+  --lfc-surface-alt: #1c1c1c;
+  --lfc-border: #2a2a2a;
+  --lfc-muted: #bdbdbd;
+}
+
+html[data-dark-mode="true"] body {
+  background-color: #0f0f0f;
+  color: #e0e0e0;
+}
+
+html[data-dark-mode="true"] .gen-header-style-1 {
+  background-color: #242424;
+  border-color: #333333;
+}
+
+html[data-dark-mode="true"] input,
+html[data-dark-mode="true"] textarea,
+html[data-dark-mode="true"] select {
+  background-color: #242424 !important;
+  color: #e0e0e0 !important;
+  border-color: #333333 !important;
+}
+
+html[data-dark-mode="true"] .card {
+  background-color: #242424 !important;
+  border-color: #333333 !important;
+}
+
+html[data-dark-mode="true"] table {
+  background-color: #1a1a1a !important;
+}
+
+html[data-dark-mode="true"] table thead {
+  background-color: #242424 !important;
+}
+
+html[data-dark-mode="true"] table tbody tr:hover {
+  background-color: #2a2a2a !important;
+}
+
+html[data-dark-mode="true"] .lfc-cell-card {
+  background: linear-gradient(135deg, #1a1a1a 0%, rgba(20, 20, 20, 0.8) 100%) !important;
+  border-color: #2a2a2a !important;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+  background: white !important;
+  border: 2px solid #e50914 !important;
+  color: #e50914 !important;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.dark-mode-toggle:hover {
+  background-color: #e50914 !important;
+  color: white !important;
+}
+
+html[data-dark-mode="true"] .dark-mode-toggle {
+  background-color: white !important;
+  background: white !important;
+  color: #333 !important;
+  border-color: #e50914 !important;
+}
+
+html[data-dark-mode="true"] .dark-mode-toggle i {
+  color: #333 !important;
+}
+
+html[data-dark-mode="true"] .dark-mode-toggle:hover {
+  background-color: #e50914 !important;
+  color: white !important;
+}
+
+html[data-dark-mode="true"] .dark-mode-toggle:hover i {
+  color: white !important;
 }
