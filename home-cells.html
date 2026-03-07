@@ -14,23 +14,23 @@
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
   <meta name="theme-color" content="#e50914">
-  <link rel="canonical" href="https://lfcjahi.org/home-cells.html">
+  <link rel="canonical" href="https://lfcjahi.com/home-cells.html">
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://lfcjahi.org/home-cells.html">
+  <meta property="og:url" content="https://lfcjahi.com/home-cells.html">
   <meta property="og:title" content="LFC-JAHI Home Cells | Fellowship Directory & Locations">
   <meta property="og:description" content="Find a home cell fellowship near you in Jahi, Abuja. Join our vibrant home cell community for Bible study and prayer.">
-  <meta property="og:image" content="https://lfcjahi.org/images/og-image.jpg">
+  <meta property="og:image" content="https://lfcjahi.com/images/og-image.jpg">
   <meta property="og:site_name" content="LFC-JAHI MEDIA">
   <meta property="og:locale" content="en_NG">
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://lfcjahi.org/home-cells.html">
+  <meta name="twitter:url" content="https://lfcjahi.com/home-cells.html">
   <meta name="twitter:title" content="LFC-JAHI Home Cells | Fellowship Directory & Locations">
   <meta name="twitter:description" content="Find a home cell fellowship near you in Jahi, Abuja. Join our Christian community.">
-  <meta name="twitter:image" content="https://lfcjahi.org/images/og-image.jpg">
+  <meta name="twitter:image" content="https://lfcjahi.com/images/og-image.jpg">
   
   <!-- Favicon -->
   <link rel="shortcut icon" href="images/favicon.png">
@@ -47,7 +47,7 @@
     "@type": "ItemList",
     "name": "LFC-JAHI Home Cell Fellowship Directory",
     "description": "Home cell fellowship locations for Bible study and prayer in Jahi, Abuja",
-    "url": "https://lfcjahi.org/home-cells.html",
+    "url": "https://lfcjahi.com/home-cells.html",
     "itemListElement": [
       {
         "@type": "ListItem",
@@ -67,13 +67,13 @@
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://lfcjahi.org/"
+        "item": "https://lfcjahi.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Home Cells",
-        "item": "https://lfcjahi.org/home-cells.html"
+        "item": "https://lfcjahi.com/home-cells.html"
       }
     ]
   }
@@ -427,13 +427,7 @@
             <div class="lfc-search-hint">💡 Start typing to filter home cells</div>
           </div>
 
-          <div class="lfc-filter-buttons mb-4">
-            <button class="active" onclick="filterByDistrict('')">✓ All Districts</button>
-            <button onclick="filterByDistrict('JOY')">JOY 1</button>
-            <button onclick="filterByDistrict('PAUL')">PAUL 2</button>
-            <button onclick="filterByDistrict('LOVE')">LOVE 3</button>
-            <button onclick="filterByDistrict('ISAAC')">ISAAC 4</button>
-          </div>
+          <div id="districtFilters" class="lfc-filter-buttons mb-4"></div>
         </div>
       </div>
 
@@ -533,113 +527,8 @@
   <script src="js/script.js"></script>
   <script src="js/config.js"></script>
   <script src="js/home-cells-data.js"></script>
-  <script>
-    let allCells = [];
-    let currentFilter = '';
-
-    function renderCells() {
-      const container = document.getElementById('cellsContainer');
-      const searchValue = document.getElementById('cellSearch').value.toLowerCase();
-      
-      let filtered = allCells.filter(district => {
-        let matchesSearch = true;
-        let matchesDistrict = true;
-
-        if (searchValue) {
-          const searchText = searchValue;
-          matchesSearch = 
-            district.name.toLowerCase().includes(searchText) ||
-            district.location.toLowerCase().includes(searchText) ||
-            district.pastors.some(p => p.toLowerCase().includes(searchText)) ||
-            district.minister.toLowerCase().includes(searchText) ||
-            district.zones.some(z => 
-              z.cells.some(c => 
-                c.name.toLowerCase().includes(searchText) ||
-                c.address.toLowerCase().includes(searchText) ||
-                c.minister.toLowerCase().includes(searchText) ||
-                c.phone.includes(searchValue)
-              )
-            );
-        }
-
-        if (currentFilter) {
-          matchesDistrict = district.name.includes(currentFilter);
-        }
-
-        return matchesSearch && matchesDistrict;
-      });
-
-      if (filtered.length === 0) {
-        container.innerHTML = '<div class="lfc-no-results"><h5>❌ No Home Cells Found</h5><p>Try adjusting your search or filter criteria</p></div>';
-        return;
-      }
-
-      let html = '';
-      filtered.forEach(district => {
-        html += '<div class="lfc-cell-card" data-district="' + district.name + '">';
-        html += '<h4>' + district.num + '. ' + district.name + '</h4>';
-        html += '<div class="lfc-info-group">';
-        html += '<span class="lfc-info-label">📍 Covering Areas:</span>';
-        html += '<span class="lfc-info-value">' + district.location + '</span>';
-        html += '</div>';
-        html += '<div class="lfc-info-group">';
-        html += '<span class="lfc-info-label">👨‍💼 District Pastors:</span>';
-        html += '<span class="lfc-info-value">' + district.pastors.join('<br>') + '</span>';
-        html += '</div>';
-        html += '<div class="lfc-info-group">';
-        html += '<span class="lfc-info-label">👤 District Minister:</span>';
-        html += '<span class="lfc-info-value">' + district.minister + '</span>';
-        html += '</div>';
-
-        district.zones.forEach(zone => {
-          html += '<div class="lfc-zone-section">';
-          html += '<h5>⛪ Zone: ' + zone.name + '</h5>';
-          if (zone.zoneMinister) {
-            html += '<div class="lfc-info-group">';
-            html += '<span class="lfc-info-label">Zone Minister:</span>';
-            html += '<span class="lfc-info-value">' + zone.zoneMinister + '</span>';
-            html += '</div>';
-          }
-          html += '<div class="lfc-cells-table table-responsive">';
-          html += '<table class="table">';
-          html += '<thead><tr><th>Cell Name</th><th>Address</th><th>Cell Minister</th><th>Phone</th></tr></thead><tbody>';
-
-          zone.cells.forEach(cell => {
-            html += '<tr>';
-            html += '<td><strong>' + cell.name + '</strong></td>';
-            html += '<td>' + cell.address + '</td>';
-            html += '<td>' + cell.minister + '</td>';
-            html += '<td><a href="tel:' + cell.phone.replace(/\s/g, '') + '" style="color: var(--lfc-accent);">' + cell.phone + '</a></td>';
-            html += '</tr>';
-          });
-
-          html += '</tbody></table>';
-          html += '</div></div>';
-        });
-
-        html += '</div>';
-      });
-
-      container.innerHTML = html;
-    }
-
-    function filterByDistrict(name) {
-      currentFilter = name;
-      document.querySelectorAll('.lfc-filter-buttons button').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      event.target.classList.add('active');
-      renderCells();
-    }
-
-    document.getElementById('cellSearch').addEventListener('keyup', renderCells);
-
-    // Initialize with data
-    if (typeof homeCellsDirectory !== 'undefined') {
-      allCells = homeCellsDirectory;
-      renderCells();
-    }
-  </script>
+  <script src="js/lfc-directory-api.js"></script>
+  <script src="js/lfc-home-cells.js"></script>
   <script src="js/lfc-theme.js"></script>
 </body>
 

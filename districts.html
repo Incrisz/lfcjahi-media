@@ -14,23 +14,23 @@
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
   <meta name="theme-color" content="#e50914">
-  <link rel="canonical" href="https://lfcjahi.org/districts.html">
+  <link rel="canonical" href="https://lfcjahi.com/districts.html">
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://lfcjahi.org/districts.html">
+  <meta property="og:url" content="https://lfcjahi.com/districts.html">
   <meta property="og:title" content="LFC-JAHI Districts | Winners Satellite Fellowship Locations">
   <meta property="og:description" content="Find Winners Satellite Fellowship districts and outreach locations in Jahi, Abuja. Join a fellowship near you.">
-  <meta property="og:image" content="https://lfcjahi.org/images/og-image.jpg">
+  <meta property="og:image" content="https://lfcjahi.com/images/og-image.jpg">
   <meta property="og:site_name" content="LFC-JAHI MEDIA">
   <meta property="og:locale" content="en_NG">
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://lfcjahi.org/districts.html">
+  <meta name="twitter:url" content="https://lfcjahi.com/districts.html">
   <meta name="twitter:title" content="LFC-JAHI Districts | Winners Satellite Fellowship Locations">
   <meta name="twitter:description" content="Find Winners Satellite Fellowship districts and outreach locations in Jahi, Abuja.">
-  <meta name="twitter:image" content="https://lfcjahi.org/images/og-image.jpg">
+  <meta name="twitter:image" content="https://lfcjahi.com/images/og-image.jpg">
   
   <!-- Favicon -->
   <link rel="shortcut icon" href="images/favicon.png">
@@ -47,7 +47,7 @@
     "@type": "ItemList",
     "name": "LFC-JAHI District Locations",
     "description": "Winners Satellite Fellowship district locations in Jahi, Abuja",
-    "url": "https://lfcjahi.org/districts.html",
+    "url": "https://lfcjahi.com/districts.html",
     "itemListElement": [
       {
         "@type": "ListItem",
@@ -67,13 +67,13 @@
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://lfcjahi.org/"
+        "item": "https://lfcjahi.com/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Districts",
-        "item": "https://lfcjahi.org/districts.html"
+        "item": "https://lfcjahi.com/districts.html"
       }
     ]
   }
@@ -175,7 +175,7 @@
               <th>Outreach Location</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="districtTableBody">
             <tr>
               <td>1</td>
               <td><strong>JOY</strong></td>
@@ -507,38 +507,8 @@
   <script src="js/streamlab-core.js"></script>
   <script src="js/script.js"></script>
   <script src="js/config.js"></script>
-  <script>
-    (function() {
-      var searchInput = document.getElementById('districtSearch');
-      var table = document.querySelector('.lfc-districts-table table');
-      var rows = table.querySelectorAll('tbody tr');
-
-      if (!searchInput) return;
-
-      searchInput.addEventListener('keyup', function() {
-        var searchValue = searchInput.value.toLowerCase().trim();
-
-        rows.forEach(function(row) {
-          var text = row.textContent.toLowerCase();
-          if (searchValue === '' || text.includes(searchValue)) {
-            row.style.display = '';
-          } else {
-            row.style.display = 'none';
-          }
-        });
-      });
-
-      // Clear button functionality on Escape key
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && searchInput === document.activeElement) {
-          searchInput.value = '';
-          rows.forEach(function(row) {
-            row.style.display = '';
-          });
-        }
-      });
-    })();
-  </script>
+  <script src="js/lfc-directory-api.js"></script>
+  <script src="js/lfc-districts.js"></script>
   <script src="js/lfc-theme.js"></script>
 </body>
 
