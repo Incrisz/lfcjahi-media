@@ -83,6 +83,10 @@
       <div class="row align-items-center mb-4">
         <div class="col-md-12">
           <h4 class="gen-heading-title mb-3">District Directory</h4>
+          <div class="lfc-search-box mb-4">
+            <input type="text" id="districtSearch" class="form-control" placeholder="Search by district name, pastor, location, or phone number...">
+            <small class="text-muted d-block mt-2">Start typing to filter results</small>
+          </div>
         </div>
       </div>
 
@@ -426,6 +430,38 @@
   <script src="js/streamlab-core.js"></script>
   <script src="js/script.js"></script>
   <script src="js/config.js"></script>
+  <script>
+    (function() {
+      var searchInput = document.getElementById('districtSearch');
+      var table = document.querySelector('.lfc-districts-table table');
+      var rows = table.querySelectorAll('tbody tr');
+
+      if (!searchInput) return;
+
+      searchInput.addEventListener('keyup', function() {
+        var searchValue = searchInput.value.toLowerCase().trim();
+
+        rows.forEach(function(row) {
+          var text = row.textContent.toLowerCase();
+          if (searchValue === '' || text.includes(searchValue)) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      });
+
+      // Clear button functionality on Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && searchInput === document.activeElement) {
+          searchInput.value = '';
+          rows.forEach(function(row) {
+            row.style.display = '';
+          });
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>
