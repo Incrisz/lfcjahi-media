@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="keywords" content="LFC-JAHI, Home Cells, Fellowship, Winners" />
+  <meta name="description" content="Living Faith Church Jahi - Home Cell Fellowship Directory" />
+  <meta name="author" content="LFC-JAHI MEDIA" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>LFC-JAHI | Home Cell Fellowship</title>
+  <link rel="shortcut icon" href="images/favicon.png">
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/lfc-jahi-media.css" />
+  <style>
+    /* Age-friendly enhancements - larger fonts, better contrast */
+    body {
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .gen-heading-title {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 25px;
+    }
+
+    h4 {
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    h5 {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .lfc-cell-card {
+      background: linear-gradient(135deg, var(--lfc-surface) 0%, rgba(20, 20, 20, 0.8) 100%);
+      border: 3px solid var(--lfc-border);
+      border-radius: 15px;
+      padding: 35px;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .lfc-cell-card:hover {
+      border-color: var(--lfc-accent);
+      box-shadow: 0 10px 30px rgba(229, 9, 20, 0.25);
+      transform: translateY(-4px);
+    }
+
+    .lfc-cell-card h4 {
+      color: var(--lfc-accent);
+      margin-bottom: 25px;
+      padding-bottom: 18px;
+      border-bottom: 4px solid var(--lfc-accent);
+      font-size: 28px;
+    }
+
+    .lfc-info-group {
+      margin-bottom: 25px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      border-left: 6px solid var(--lfc-accent);
+    }
+
+    .lfc-info-label {
+      font-weight: 700;
+      color: var(--lfc-accent);
+      font-size: 18px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .lfc-info-value {
+      color: #e8e8e8;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .lfc-search-box {
+      position: relative;
+      margin-bottom: 35px;
+    }
+
+    .lfc-search-box .form-control {
+      background-color: var(--lfc-surface-alt);
+      border: 3px solid var(--lfc-accent);
+      color: #fff;
+      height: 65px;
+      padding: 18px 25px;
+      font-size: 19px !important;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .lfc-search-box .form-control:focus {
+      background-color: var(--lfc-surface-alt);
+      border-color: var(--lfc-accent);
+      color: #fff;
+      box-shadow: 0 0 0 6px rgba(229, 9, 20, 0.15);
+    }
+
+    .lfc-search-box .form-control::placeholder {
+      color: var(--lfc-muted);
+      font-size: 19px;
+    }
+
+    .lfc-search-hint {
+      font-size: 18px;
+      color: var(--lfc-muted);
+      margin-top: 10px;
+    }
+
+    .lfc-zone-section {
+      background-color: rgba(229, 9, 20, 0.1);
+      border-left: 6px solid var(--lfc-accent);
+      padding: 30px;
+      margin: 30px 0;
+      border-radius: 10px;
+    }
+
+    .lfc-zone-section h5 {
+      color: var(--lfc-accent);
+      margin-bottom: 25px;
+      font-size: 24px;
+    }
+
+    .lfc-cells-table {
+      margin-top: 25px;
+    }
+
+    .lfc-cells-table .table {
+      background-color: transparent;
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .lfc-cells-table .table thead {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .lfc-cells-table .table thead th {
+      color: var(--lfc-accent);
+      border: 2px solid var(--lfc-border);
+      padding: 18px;
+      font-weight: 700;
+      font-size: 17px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .lfc-cells-table .table tbody td {
+      color: #e8e8e8;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      padding: 16px;
+      font-size: 17px;
+      vertical-align: middle;
+    }
+
+    .lfc-cells-table .table tbody tr {
+      transition: background-color 0.25s ease;
+    }
+
+    .lfc-cells-table .table tbody tr:hover {
+      background-color: rgba(229, 9, 20, 0.12);
+    }
+
+    .lfc-cells-table .table tbody tr td strong {
+      color: #fff;
+      display: block;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .lfc-cells-table .table tbody tr td a {
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .lfc-filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 35px;
+    }
+
+    .lfc-filter-buttons button {
+      padding: 15px 30px;
+      font-size: 17px;
+      font-weight: 700;
+      border: 3px solid var(--lfc-accent);
+      background-color: transparent;
+      color: var(--lfc-accent);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .lfc-filter-buttons button:hover,
+    .lfc-filter-buttons button.active {
+      background-color: var(--lfc-accent);
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    .lfc-no-results {
+      background: linear-gradient(135deg, rgba(229, 9, 20, 0.15) 0%, rgba(229, 9, 20, 0.08) 100%);
+      border: 3px solid var(--lfc-border);
+      border-radius: 12px;
+      padding: 50px 30px;
+      text-align: center;
+    }
+
+    .lfc-no-results h5 {
+      color: var(--lfc-accent);
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    .lfc-no-results p {
+      color: var(--lfc-muted);
+      font-size: 20px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        font-size: 16px;
+      }
+
+      .gen-heading-title {
+        font-size: 28px;
+      }
+
+      h4 {
+        font-size: 22px;
+      }
+
+      h5 {
+        font-size: 20px;
+      }
+
+      .lfc-cell-card {
+        padding: 25px;
+      }
+
+      .lfc-search-box .form-control {
+        height: 60px;
+        font-size: 17px !important;
+      }
+
+      .lfc-cells-table .table {
+        font-size: 15px;
+      }
+
+      .lfc-cells-table .table thead th {
+        padding: 14px;
+        font-size: 15px;
+      }
+
+      .lfc-cells-table .table tbody td {
+        padding: 13px;
+        font-size: 15px;
+      }
+
+      .lfc-filter-buttons {
+        gap: 10px;
+      }
+
+      .lfc-filter-buttons button {
+        padding: 12px 20px;
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="gen-loading">
+    <div id="gen-loading-center">
+      <img src="images/logo-1.png" alt="loading">
+    </div>
+  </div>
+
+  <header id="gen-header" class="gen-header-style-1 gen-has-sticky">
+    <div class="gen-bottom-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg navbar-light">
+              <a class="navbar-brand" href="index.html">
+                <img class="img-fluid logo" src="images/logo-1.png" alt="LFC-JAHI MEDIA logo">
+              </a>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div id="gen-menu-contain" class="gen-menu-contain">
+                  <ul id="gen-main-menu" class="navbar-nav ml-auto">
+                    <li class="menu-item"><a href="index.html">Home</a></li>
+                    <li class="menu-item"><a href="index.html#message-library">Messages</a></li>
+                    <li class="menu-item"><a href="districts.html">Districts</a></li>
+                    <li class="menu-item active"><a href="home-cells.html">Home Cells</a></li>
+                    <li class="menu-item"><a href="https://docs.google.com/forms/d/e/1FAIpQLScrp8-yWV6-2sdUqhCDW-gb8A71Qx-LMkO1PsOZ9Dk3TgnR2w/viewform" target="_blank" rel="noopener">Winning-Care</a></li>
+                    <li class="menu-item"><a href="https://docs.google.com/forms/d/e/1FAIpQLSc4xRfQF7PUOmDug_fk3lOZIaG7EFXZcp1viZLC9wHixdjrRw/viewform" target="_blank" rel="noopener">Follow-Up</a></li>
+                    <li class="menu-item"><a href="index.html#about-ministry">About</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="gen-header-info-box">
+                <div class="gen-btn-container">
+                  <a id="latestMessageLink" href="single-message.html" class="gen-button">
+                    <div class="gen-button-block">
+                      <span class="gen-button-line-left"></span>
+                      <span class="gen-button-text">Latest Message</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+              </button>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="lfc-hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10">
+          <div class="gen-tag-line"><span>WINNERS HOME CELL FELLOWSHIP</span></div>
+          <div class="gen-movie-info">
+            <h1 class="text-white" style="font-size: 52px; font-weight: 800;">Home Cell Fellowship</h1>
+          </div>
+          <p class="text-white mt-3 d-none d-md-block" style="font-size: 22px;">
+            Find your home cell group and connect with your faith community across Abuja. All 30 district fellowships available below.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gen-section-padding-2">
+    <div class="container">
+      <div class="row align-items-center mb-4">
+        <div class="col-md-12">
+          <h2 class="gen-heading-title">📍 Find Your Home Cell</h2>
+          
+          <div class="lfc-search-box mb-4">
+            <input type="text" id="cellSearch" class="form-control" placeholder="Search by cell name, address, pastor, or phone...">
+            <div class="lfc-search-hint">💡 Start typing to filter home cells</div>
+          </div>
+
+          <div class="lfc-filter-buttons mb-4">
+            <button class="active" onclick="filterByDistrict('')">✓ All Districts</button>
+            <button onclick="filterByDistrict('JOY')">JOY 1</button>
+            <button onclick="filterByDistrict('PAUL')">PAUL 2</button>
+            <button onclick="filterByDistrict('LOVE')">LOVE 3</button>
+            <button onclick="filterByDistrict('ISAAC')">ISAAC 4</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="cellsContainer">
+        <div class="lfc-no-results">
+          <h5>Loading Home Cell Directory...</h5>
+          <p>Please wait while we load all home cells</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lfc-single-card-section gen-section-padding-3">
+    <div class="container">
+      <div class="lfc-single-card">
+        <h4 class="text-white mb-3" style="font-size: 28px;">✨ Join a Home Cell Near You</h4>
+        <p class="mb-0" style="font-size: 20px; line-height: 1.8;">
+          Our home cells provide intimate fellowship and community support across all districts in Abuja. Each cell is led by a dedicated minister who cares for your spiritual growth and development. Visit a home cell in your area and become part of our growing faith community today!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="gen-footer">
+    <div class="gen-footer-style-1">
+      <div class="gen-footer-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-4 col-md-6">
+              <div class="widget">
+                <img src="images/logo-1.png" class="gen-footer-logo" alt="LFC-JAHI MEDIA logo">
+                <p>Audio sermons for spiritual growth, anytime and anywhere.</p>
+                <div class="gen-social-links mt-3">
+                  <a href="https://web.facebook.com/lfcjahiabuja" target="_blank" rel="noopener" title="Follow on Facebook">
+                    <i class="fab fa-facebook"></i>
+                  </a>
+                  <a href="https://www.instagram.com/lfcjahiabuja/" target="_blank" rel="noopener" title="Follow on Instagram">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                  <a href="https://www.youtube.com/c/LivingFaithChurchJahiAbuja" target="_blank" rel="noopener" title="Subscribe on YouTube">
+                    <i class="fab fa-youtube"></i>
+                  </a>
+                  <a href="https://x.com/lfcjahiabuja?lang=en" target="_blank" rel="noopener" title="Follow on X (Twitter)">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                  <a href="https://x.com/lfcjahiabuja" target="_blank" rel="noopener" title="Follow on TikTok">
+                    <i class="fab fa-tiktok"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+              <div class="widget">
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="menu">
+                  <li class="menu-item"><a href="index.html">Home</a></li>
+                  <li class="menu-item"><a href="index.html#message-library">Messages</a></li>
+                  <li class="menu-item"><a href="districts.html">Districts</a></li>
+                  <li class="menu-item"><a href="home-cells.html">Home Cells</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+              <div class="widget">
+                <h4 class="footer-title">Need Prayer?</h4>
+                <p>Reach the media team for message requests and prayer support.</p>
+                <a href="#" class="gen-button gen-button-flat" target="_blank" rel="noopener">
+                  <span class="text">Contact on WhatsApp</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="gen-copyright-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 align-self-center">
+              <span class="gen-copyright">Copyright 2026 LFC-JAHI MEDIA. All rights reserved.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="back-to-top">
+    <a class="top" id="top" href="#top"><i class="ion-ios-arrow-up"></i></a>
+  </div>
+
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script src="js/asyncloader.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/streamlab-core.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/home-cells-data.js"></script>
+  <script>
+    let allCells = [];
+    let currentFilter = '';
+
+    function renderCells() {
+      const container = document.getElementById('cellsContainer');
+      const searchValue = document.getElementById('cellSearch').value.toLowerCase();
+      
+      let filtered = allCells.filter(district => {
+        let matchesSearch = true;
+        let matchesDistrict = true;
+
+        if (searchValue) {
+          const searchText = searchValue;
+          matchesSearch = 
+            district.name.toLowerCase().includes(searchText) ||
+            district.location.toLowerCase().includes(searchText) ||
+            district.pastors.some(p => p.toLowerCase().includes(searchText)) ||
+            district.minister.toLowerCase().includes(searchText) ||
+            district.zones.some(z => 
+              z.cells.some(c => 
+                c.name.toLowerCase().includes(searchText) ||
+                c.address.toLowerCase().includes(searchText) ||
+                c.minister.toLowerCase().includes(searchText) ||
+                c.phone.includes(searchValue)
+              )
+            );
+        }
+
+        if (currentFilter) {
+          matchesDistrict = district.name.includes(currentFilter);
+        }
+
+        return matchesSearch && matchesDistrict;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div class="lfc-no-results"><h5>❌ No Home Cells Found</h5><p>Try adjusting your search or filter criteria</p></div>';
+        return;
+      }
+
+      let html = '';
+      filtered.forEach(district => {
+        html += '<div class="lfc-cell-card" data-district="' + district.name + '">';
+        html += '<h4>' + district.num + '. ' + district.name + '</h4>';
+        html += '<div class="lfc-info-group">';
+        html += '<span class="lfc-info-label">📍 Covering Areas:</span>';
+        html += '<span class="lfc-info-value">' + district.location + '</span>';
+        html += '</div>';
+        html += '<div class="lfc-info-group">';
+        html += '<span class="lfc-info-label">👨‍💼 District Pastors:</span>';
+        html += '<span class="lfc-info-value">' + district.pastors.join('<br>') + '</span>';
+        html += '</div>';
+        html += '<div class="lfc-info-group">';
+        html += '<span class="lfc-info-label">👤 District Minister:</span>';
+        html += '<span class="lfc-info-value">' + district.minister + '</span>';
+        html += '</div>';
+
+        district.zones.forEach(zone => {
+          html += '<div class="lfc-zone-section">';
+          html += '<h5>⛪ Zone: ' + zone.name + '</h5>';
+          if (zone.zoneMinister) {
+            html += '<div class="lfc-info-group">';
+            html += '<span class="lfc-info-label">Zone Minister:</span>';
+            html += '<span class="lfc-info-value">' + zone.zoneMinister + '</span>';
+            html += '</div>';
+          }
+          html += '<div class="lfc-cells-table table-responsive">';
+          html += '<table class="table">';
+          html += '<thead><tr><th>Cell Name</th><th>Address</th><th>Cell Minister</th><th>Phone</th></tr></thead><tbody>';
+
+          zone.cells.forEach(cell => {
+            html += '<tr>';
+            html += '<td><strong>' + cell.name + '</strong></td>';
+            html += '<td>' + cell.address + '</td>';
+            html += '<td>' + cell.minister + '</td>';
+            html += '<td><a href="tel:' + cell.phone.replace(/\s/g, '') + '" style="color: var(--lfc-accent);">' + cell.phone + '</a></td>';
+            html += '</tr>';
+          });
+
+          html += '</tbody></table>';
+          html += '</div></div>';
+        });
+
+        html += '</div>';
+      });
+
+      container.innerHTML = html;
+    }
+
+    function filterByDistrict(name) {
+      currentFilter = name;
+      document.querySelectorAll('.lfc-filter-buttons button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      renderCells();
+    }
+
+    document.getElementById('cellSearch').addEventListener('keyup', renderCells);
+
+    // Initialize with data
+    if (typeof homeCellsDirectory !== 'undefined') {
+      allCells = homeCellsDirectory;
+      renderCells();
+    }
+  </script>
+</body>
+
+</html>
