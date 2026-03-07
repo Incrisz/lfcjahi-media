@@ -90,8 +90,7 @@
     <div class="container">
       <div class="lfc-filter-card">
         <div class="row align-items-end">
-          <div class="col-lg-4 col-md-6 mb-3">
-            <label class="text-white mb-2" for="searchInput">Search Messages</label>
+          <div class="col-lg-3 col-md-5 mb-3 align-self-end">
             <input id="searchInput" type="text" class="form-control"
               placeholder="Search by title, pastor, scripture, or series">
           </div>
@@ -124,9 +123,14 @@
             </select>
           </div>
           <div class="col-lg-12">
-            <button id="clearFilters" class="gen-button gen-button-flat">
-              <span class="text">Clear Filters</span>
-            </button>
+            <div class="d-flex justify-content-between align-items-center">
+              <button id="searchButton" class="gen-button">
+                <span class="text">Search</span>
+              </button>
+              <button id="clearFilters" class="gen-button gen-button-flat">
+                <span class="text">Clear Filters</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

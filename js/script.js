@@ -84,36 +84,57 @@ Design and Developed by: Gentechtree.com
         }
         if (jQuery('header').hasClass('gen-header-default'))
         {
-            jQuery(window).scroll(function() {
-                var scrollTop = jQuery(window).scrollTop();
-                if (scrollTop > 300) {
-                    jQuery('.gen-bottom-header').addClass('gen-header-sticky animated fadeInDown animate__faster');
-                } else {
-                    jQuery('.gen-bottom-header').removeClass('gen-header-sticky animated fadeInDown animate__faster');
+            var headerTicking = false;
+            jQuery(window).on('scroll', function() {
+                if (!headerTicking) {
+                    window.requestAnimationFrame(function() {
+                        var scrollTop = jQuery(window).scrollTop();
+                        if (scrollTop > 300) {
+                            jQuery('.gen-bottom-header').addClass('gen-header-sticky animated fadeInDown animate__faster');
+                        } else {
+                            jQuery('.gen-bottom-header').removeClass('gen-header-sticky animated fadeInDown animate__faster');
+                        }
+                        headerTicking = false;
+                    });
+                    headerTicking = true;
                 }
-            });
+            }, false);
         }
         if (jQuery('header').hasClass('gen-has-sticky')) {
-            jQuery(window).scroll(function() {
-                var scrollTop = jQuery(window).scrollTop();
-                if (scrollTop > 300) {
-                    jQuery('header').addClass('gen-header-sticky animated fadeInDown animate__faster');
-                } else {
-                    jQuery('header').removeClass('gen-header-sticky animated fadeInDown animate__faster');
+            var ticking = false;
+            jQuery(window).on('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        var scrollTop = jQuery(window).scrollTop();
+                        if (scrollTop > 300) {
+                            jQuery('header').addClass('gen-header-sticky animated fadeInDown animate__faster');
+                        } else {
+                            jQuery('header').removeClass('gen-header-sticky animated fadeInDown animate__faster');
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
                 }
-            });
+            }, false);
         }
         /*------------------------
                 Back To Top
         --------------------------*/
         jQuery('#back-to-top').fadeOut();
+        var scrollTicking = false;
         jQuery(window).on("scroll", function() {
-            if (jQuery(this).scrollTop() > 250) {
-                jQuery('#back-to-top').fadeIn(1400);
-            } else {
-                jQuery('#back-to-top').fadeOut(400);
+            if (!scrollTicking) {
+                window.requestAnimationFrame(function() {
+                    if (jQuery(window).scrollTop() > 250) {
+                        jQuery('#back-to-top').fadeIn(1400);
+                    } else {
+                        jQuery('#back-to-top').fadeOut(400);
+                    }
+                    scrollTicking = false;
+                });
+                scrollTicking = true;
             }
-        });
+        }, false);
         jQuery('#top').on('click', function() {
             jQuery('top').tooltip('hide');
             jQuery('body,html').animate({

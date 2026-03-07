@@ -6,6 +6,10 @@
   --lfc-accent: #e50914;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 body {
   background-color: #0f0f0f;
 }
@@ -29,6 +33,8 @@ body {
   margin-top: -38px;
   position: relative;
   z-index: 2;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .lfc-filter-card {

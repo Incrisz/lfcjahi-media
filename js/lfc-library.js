@@ -9,6 +9,7 @@
   var monthFilter = document.getElementById('monthFilter');
   var pastorFilter = document.getElementById('pastorFilter');
   var sortFilter = document.getElementById('sortFilter');
+  var searchButton = document.getElementById('searchButton');
   var clearFiltersBtn = document.getElementById('clearFilters');
   var messageGrid = document.getElementById('messageGrid');
   var resultCount = document.getElementById('resultCount');
@@ -200,6 +201,17 @@
     [searchInput, yearFilter, monthFilter, pastorFilter, sortFilter].forEach(function (el) {
       el.addEventListener('input', filterAndRender);
       el.addEventListener('change', filterAndRender);
+    });
+
+    searchButton.addEventListener('click', function () {
+      filterAndRender();
+      // Scroll to the message grid
+      setTimeout(function() {
+        var messageGridSection = document.querySelector('.gen-section-padding-2');
+        if (messageGridSection) {
+          messageGridSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
     });
 
     clearFiltersBtn.addEventListener('click', function () {
