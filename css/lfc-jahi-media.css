@@ -286,6 +286,44 @@ body {
   color: var(--lfc-muted);
 }
 
+.lfc-featured-section {
+  padding: 60px 0;
+}
+
+.lfc-featured-card {
+  background: linear-gradient(135deg, rgba(229, 9, 20, 0.1) 0%, rgba(229, 9, 20, 0.05) 100%);
+  border: 2px solid var(--lfc-border);
+  border-left: 5px solid var(--lfc-accent);
+  border-radius: 10px;
+  padding: 40px;
+  transition: all 0.3s ease;
+}
+
+.lfc-featured-card:hover {
+  border-color: var(--lfc-accent);
+  box-shadow: 0 10px 40px rgba(229, 9, 20, 0.15);
+  transform: translateY(-5px);
+}
+
+.lfc-featured-content h3 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.lfc-featured-content p {
+  color: var(--lfc-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.lfc-featured-icon {
+  font-size: 80px;
+  color: var(--lfc-accent);
+  opacity: 0.2;
+}
+
 @media (max-width: 767px) {
   .lfc-hero {
     padding: 120px 0 70px;
