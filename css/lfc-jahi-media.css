@@ -599,6 +599,42 @@ html:not([data-dark-mode="true"]) .lfc-featured-content p {
   background-color: #141414 !important;
 }
 
+/* Back to Top Button - Always visible and styled */
+#back-to-top {
+  z-index: 99999 !important;
+  position: fixed !important;
+  right: 20px !important;
+  bottom: 20px !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#back-to-top .top {
+  background: #e50914 !important;
+  color: #ffffff !important;
+  border-color: #e50914 !important;
+  width: 50px !important;
+  height: 50px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#back-to-top .top i {
+  color: #ffffff !important;
+  font-size: 20px !important;
+}
+
+#back-to-top .top:hover {
+  background: #b30710 !important;
+  border-color: #b30710 !important;
+}
+
 .gen-copyright {
   color: #888888 !important;
 }
@@ -639,11 +675,31 @@ html:not([data-dark-mode="true"]) .lfc-featured-content p {
   .navbar-nav .menu-item a,
   .gen-menu-contain a {
     color: #ffffff !important;
+    background: transparent !important;
+    background-color: transparent !important;
   }
 
   #gen-main-menu .menu-item a:hover,
   .navbar-nav .menu-item a:hover,
-  .gen-menu-contain a:hover {
+  .gen-menu-contain a:hover,
+  #gen-main-menu .menu-item a:focus,
+  .navbar-nav .menu-item a:focus,
+  .gen-menu-contain a:focus,
+  #gen-main-menu .menu-item a:active,
+  .navbar-nav .menu-item a:active,
+  .gen-menu-contain a:active {
+    color: #e50914 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+
+  header#gen-header .gen-bottom-header .navbar .navbar-nav li a:focus,
+  header#gen-header .gen-bottom-header .navbar .navbar-nav li a:active,
+  header#gen-header .gen-bottom-header .navbar .navbar-nav li .sub-menu li a:focus,
+  header#gen-header .gen-bottom-header .navbar .navbar-nav li .sub-menu li a:active,
+  header#gen-header .gen-bottom-header .navbar .navbar-nav li .sub-menu li a:hover {
+    background: transparent !important;
+    background-color: transparent !important;
     color: #e50914 !important;
   }
 
