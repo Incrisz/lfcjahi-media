@@ -64,26 +64,5 @@
         updateLogos(true);
       }
     });
-
-    // Keep back-to-top button always visible
-    const backToTop = document.getElementById('back-to-top');
-    if (backToTop) {
-      // Override jQuery's fadeOut by keeping button visible
-      backToTop.style.display = 'block';
-      backToTop.style.opacity = '1';
-      backToTop.style.visibility = 'visible';
-      
-      // Use MutationObserver to prevent jQuery from hiding it
-      const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-          if (mutation.attributeName === 'style') {
-            backToTop.style.display = 'block';
-            backToTop.style.opacity = '1';
-            backToTop.style.visibility = 'visible';
-          }
-        });
-      });
-      observer.observe(backToTop, { attributes: true, attributeFilter: ['style'] });
-    }
   });
 })();

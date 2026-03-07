@@ -599,15 +599,12 @@ html:not([data-dark-mode="true"]) .lfc-featured-content p {
   background-color: #141414 !important;
 }
 
-/* Back to Top Button - Always visible and styled */
+/* Back to Top Button - Styling only (visibility controlled by JS) */
 #back-to-top {
   z-index: 99999 !important;
   position: fixed !important;
   right: 20px !important;
   bottom: 20px !important;
-  display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
 }
 
 #back-to-top .top {
@@ -621,8 +618,6 @@ html:not([data-dark-mode="true"]) .lfc-featured-content p {
   justify-content: center !important;
   border-radius: 50% !important;
   box-shadow: 0 2px 10px rgba(0,0,0,0.3) !important;
-  opacity: 1 !important;
-  visibility: visible !important;
 }
 
 #back-to-top .top i {
