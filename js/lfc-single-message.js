@@ -84,8 +84,51 @@
 
     var downloadBtn = document.getElementById('downloadMessage');
     if (downloadBtn) {
-      downloadBtn.href = currentMessage.downloadUrl || currentMessage.audioUrl;
-      downloadBtn.setAttribute('download', currentMessage.id + '.mp3');
+      downloadBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        var url = currentMessage.downloadUrl || currentMessage.audioUrl;
+        var filename = currentMessage.id + '.mp3';
+        
+        if (!url) {
+          console.error('No download URL available');
+          return false;
+        }
+        
+        // Always use XHR blob download for reliability
+        directDownload(url, filename);
+        
+        return false;
+      });
+    }
+    
+    function directDownload(url, filename) {
+      // Use XMLHttpRequest as fallback for better compatibility
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.responseType = 'blob';
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          var blob = xhr.response;
+          var blobUrl = window.URL.createObjectURL(blob);
+          var link = document.createElement('a');
+          link.href = blobUrl;
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          window.URL.revokeObjectURL(blobUrl);
+        } else {
+          console.error('Download failed with status:', xhr.status);
+          alert('Download failed. Please try again.');
+        }
+      };
+      xhr.onerror = function() {
+        console.error('XHR download failed');
+        alert('Download failed. Please try again.');
+      };
+      xhr.send();
     }
 
     var shareBtn = document.getElementById('copyMessageLink');
