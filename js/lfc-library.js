@@ -1,9 +1,4 @@
 (function () {
-  var messages = (window.lfcMessages || []).slice();
-  if (!messages.length) {
-    return;
-  }
-
   var monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
@@ -18,8 +13,16 @@
   var messageGrid = document.getElementById('messageGrid');
   var resultCount = document.getElementById('resultCount');
   var noResults = document.getElementById('noResults');
+  var latestMessageLinks = [
+    document.getElementById('latestMessageLink'),
+    document.getElementById('quickPlayLatestLink'),
+    document.getElementById('startListeningLink'),
+    document.getElementById('footerLatestMessageLink')
+  ].filter(Boolean);
 
   var urlParams = new URLSearchParams(window.location.search);
+  var initialized = false;
+  var messages = [];
 
   function parseDate(value) {
     return new Date(value + 'T00:00:00');
@@ -34,6 +37,10 @@
   }
 
   function populateFilters() {
+    yearFilter.innerHTML = '<option value="">All Years</option>';
+    monthFilter.innerHTML = '<option value="">All Months</option>';
+    pastorFilter.innerHTML = '<option value="">All Pastors</option>';
+
     var years = Array.from(new Set(messages.map(function (msg) {
       return parseDate(msg.date).getFullYear();
     }))).sort(function (a, b) {
@@ -130,6 +137,17 @@
     }
   }
 
+  function updateLatestLinks() {
+    var latestMessage = messages[0];
+    if (!latestMessage) {
+      return;
+    }
+
+    latestMessageLinks.forEach(function (link) {
+      link.href = 'single-message.html?id=' + encodeURIComponent(latestMessage.id);
+    });
+  }
+
   function filterAndRender() {
     var searchValue = searchInput.value.trim().toLowerCase();
     var yearValue = yearFilter.value;
@@ -172,21 +190,37 @@
     }
   }
 
-  populateFilters();
-  applyQueryDefaults();
-  filterAndRender();
+  function bindEventsOnce() {
+    if (initialized) {
+      return;
+    }
 
-  [searchInput, yearFilter, monthFilter, pastorFilter, sortFilter].forEach(function (el) {
-    el.addEventListener('input', filterAndRender);
-    el.addEventListener('change', filterAndRender);
-  });
+    initialized = true;
 
-  clearFiltersBtn.addEventListener('click', function () {
-    searchInput.value = '';
-    yearFilter.value = '';
-    monthFilter.value = '';
-    pastorFilter.value = '';
-    sortFilter.value = 'newest';
+    [searchInput, yearFilter, monthFilter, pastorFilter, sortFilter].forEach(function (el) {
+      el.addEventListener('input', filterAndRender);
+      el.addEventListener('change', filterAndRender);
+    });
+
+    clearFiltersBtn.addEventListener('click', function () {
+      searchInput.value = '';
+      yearFilter.value = '';
+      monthFilter.value = '';
+      pastorFilter.value = '';
+      sortFilter.value = 'newest';
+      filterAndRender();
+    });
+  }
+
+  function initLibrary() {
+    messages = (window.lfcMessages || []).slice();
+    bindEventsOnce();
+    updateLatestLinks();
+    populateFilters();
+    applyQueryDefaults();
     filterAndRender();
-  });
+  }
+
+  initLibrary();
+  document.addEventListener('lfc:messages-ready', initLibrary);
 })();
