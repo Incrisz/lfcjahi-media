@@ -457,6 +457,30 @@ body {
   .lfc-card-link .gen-movie-img img {
     height: 260px;
   }
+
+  .lfc-featured-section {
+    padding: 30px 0;
+  }
+
+  .lfc-featured-card {
+    padding: 20px;
+  }
+
+  .lfc-featured-content h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .lfc-featured-content p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px !important;
+  }
+
+  .lfc-featured-icon {
+    font-size: 50px;
+    margin-top: 15px;
+  }
 }
 
 /* ============================================
