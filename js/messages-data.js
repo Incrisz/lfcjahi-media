@@ -1,14 +1,8 @@
 (function () {
-  function getMetaContent(name) {
-    var tag = document.querySelector('meta[name="' + name + '"]');
-    return tag ? (tag.getAttribute('content') || '').trim() : '';
-  }
-
   function getApiBaseUrl() {
     var configured = (
       (window.lfcRuntimeConfig && window.lfcRuntimeConfig.backendUrl) ||
       window.lfcApiBaseUrl ||
-      getMetaContent('lfc-api-base-url') ||
       ''
     ).replace(/\/+$/, '');
     if (configured) {
