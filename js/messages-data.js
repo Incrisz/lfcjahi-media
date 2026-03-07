@@ -38,8 +38,9 @@
     var thumbnail = item.thumbnailUrl || 'images/background/asset-14.jpeg';
     var category = item.category || 'Audio';
     var mediaUrl = item.mediaUrl || '';
-    var downloadUrl = item.downloadUrl || mediaUrl;
     var safeId = item.id || slugify(title + '-' + date + '-' + index);
+    // Construct download URL using the configured backend URL to ensure HTTPS
+    var downloadUrl = item.id ? (getApiBaseUrl() + '/api/media/' + item.id + '/download') : mediaUrl;
 
     return {
       id: safeId,
