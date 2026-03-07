@@ -38,6 +38,7 @@
     var thumbnail = item.thumbnailUrl || 'images/background/asset-14.jpeg';
     var category = item.category || 'Audio';
     var mediaUrl = item.mediaUrl || '';
+    var downloadUrl = item.downloadUrl || mediaUrl;
     var safeId = item.id || slugify(title + '-' + date + '-' + index);
 
     return {
@@ -49,6 +50,7 @@
       durationMinutes: 0,
       image: thumbnail,
       audioUrl: mediaUrl,
+      downloadUrl: downloadUrl,
       scripture: '',
       series: category,
       description: item.description || ''

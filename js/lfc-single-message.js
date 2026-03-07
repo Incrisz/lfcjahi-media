@@ -84,7 +84,7 @@
 
     var downloadBtn = document.getElementById('downloadMessage');
     if (downloadBtn) {
-      downloadBtn.href = currentMessage.audioUrl;
+      downloadBtn.href = currentMessage.downloadUrl || currentMessage.audioUrl;
       downloadBtn.setAttribute('download', currentMessage.id + '.mp3');
     }
 
