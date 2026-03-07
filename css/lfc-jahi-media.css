@@ -165,6 +165,31 @@ body {
   margin-bottom: 12px;
 }
 
+.gen-social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.gen-social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(229, 9, 20, 0.15);
+  border: 1px solid rgba(229, 9, 20, 0.3);
+  border-radius: 50%;
+  color: #e50914;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.gen-social-links a:hover {
+  background-color: #e50914;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
 @media (max-width: 767px) {
   .lfc-hero {
     padding: 120px 0 70px;
