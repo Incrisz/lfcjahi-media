@@ -7,3 +7,37 @@ Design and Developed by: Gentechtree
 @media (max-width:1499px) {
 	.gen-appstore-logo, .gen-playstore-logo { height: 38px; }
 }
+
+/* Mobile adjustments for single message page */
+@media (max-width: 767px) {
+	.lfc-single-card {
+		padding: 16px;
+	}
+
+	.gen-movie-action {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.gen-movie-action .gen-btn-container {
+		margin-right: 0 !important;
+		width: 100%;
+	}
+
+	.gen-movie-action .gen-btn-container .gen-button {
+		width: 100%;
+	}
+
+	.lfc-single-image {
+		max-height: 300px;
+	}
+
+	.lfc-single-hero {
+		padding: 100px 0 40px;
+	}
+
+	.lfc-single-wrap {
+		margin-top: -20px;
+	}
+}
