@@ -4016,6 +4016,7 @@ Carousel Movies
     margin-bottom: 30px;
     display: inline-block;
     width: 100%;
+    padding-bottom: 22px;
 }
 
 .gen-carousel-movies-style-1 .gen-movie-contain .gen-movie-img:before {
@@ -4045,6 +4046,8 @@ Carousel Movies
 .gen-carousel-movies-style-1 .gen-movie-contain .gen-movie-img {
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .gen-carousel-movies-style-1 .gen-movie-contain .gen-info-contain,
@@ -4063,6 +4066,7 @@ Carousel Movies
     -ms-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;
+    margin-top: 40px;
 }
 
 .gen-carousel-movies-style-1:hover .gen-movie-contain .gen-info-contain {
@@ -4079,6 +4083,8 @@ Carousel Movies
     -ms-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;
+    object-fit: cover;
+    height: 300px;
 }
 
 .gen-carousel-movies-style-1:hover .gen-movie-contain .gen-movie-img img {
@@ -4117,8 +4123,8 @@ Carousel Movies
 }
 
 .gen-carousel-movies-style-1 .gen-movie-contain .gen-movie-info h3 {
-    font-size: 20px;
-    line-height: 28px;
+    font-size: 14px;
+    line-height: 20px;
     font-weight: 400;
     white-space: nowrap;
     text-overflow: ellipsis;
