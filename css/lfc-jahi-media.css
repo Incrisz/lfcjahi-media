@@ -88,7 +88,22 @@ body {
 .lfc-card-note {
   color: var(--lfc-muted);
   font-size: 13px;
-  margin-top: 8px;
+  margin: 0;
+}
+
+.lfc-card-speaker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.lfc-card-speaker-image {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .lfc-hidden {
@@ -163,6 +178,26 @@ body {
   padding: 6px 14px;
   font-size: 12px;
   margin-bottom: 12px;
+}
+
+.lfc-speaker-summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.lfc-speaker-summary-image {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(229, 9, 20, 0.3);
+  background: var(--lfc-surface-alt);
+}
+
+.lfc-speaker-summary-copy {
+  min-width: 0;
 }
 
 .gen-social-links {

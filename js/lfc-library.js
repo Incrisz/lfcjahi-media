@@ -96,6 +96,7 @@
 
   function cardMarkup(msg) {
     var detailUrl = 'single-message.html?id=' + encodeURIComponent(msg.id);
+    var pastorImage = msg.speakerImage || msg.image;
 
     return (
       '<div class="col-xl-3 col-lg-4 col-md-6 mb-4">' +
@@ -118,7 +119,10 @@
                     '<li><span>' + formatDate(msg.date) + '</span></li>' +
                   '</ul>' +
                 '</div>' +
-                '<p class="lfc-card-note">' + msg.pastor + '</p>' +
+                '<div class="lfc-card-speaker">' +
+                  '<img class="lfc-card-speaker-image" src="' + pastorImage + '" alt="' + msg.pastor + '">' +
+                  '<p class="lfc-card-note">' + msg.pastor + '</p>' +
+                '</div>' +
               '</div>' +
             '</div>' +
           '</div>' +

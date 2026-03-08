@@ -29,6 +29,13 @@
     }
   }
 
+  function slugify(value) {
+    return String(value || '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '') || 'message';
+  }
+
   function renderEmptyState() {
     if (initialized) {
       return;
@@ -45,6 +52,8 @@
     setText('metaDuration', '-');
     setText('messageScripture', '-');
     setText('messageSeries', '-');
+    setAttr('messageSpeakerImage', 'src', 'images/background/asset-14.jpeg');
+    setAttr('messageSpeakerImage', 'alt', 'LFC Jahi');
   }
 
   function initSingleMessagePage() {
@@ -80,16 +89,18 @@
 
     setAttr('messageImage', 'src', currentMessage.image);
     setAttr('messageImage', 'alt', currentMessage.title);
+    setAttr('messageSpeakerImage', 'src', currentMessage.speakerImage || currentMessage.image);
+    setAttr('messageSpeakerImage', 'alt', currentMessage.pastor);
     setAttr('audioPlayer', 'src', currentMessage.audioUrl);
 
     var downloadBtn = document.getElementById('downloadMessage');
     if (downloadBtn) {
-      downloadBtn.addEventListener('click', function (e) {
+      downloadBtn.onclick = function (e) {
         e.preventDefault();
         e.stopPropagation();
         
         var url = currentMessage.downloadUrl || currentMessage.audioUrl;
-        var filename = currentMessage.id + '.mp3';
+        var filename = currentMessage.downloadFilename || (slugify(currentMessage.title) + '.mp3');
         
         if (!url) {
           console.error('No download URL available');
@@ -100,7 +111,7 @@
         directDownload(url, filename);
         
         return false;
-      });
+      };
     }
     
     function directDownload(url, filename) {
@@ -171,7 +182,10 @@
                   '<div class="gen-info-contain">' +
                     '<div class="gen-movie-info"><h3>' + msg.title + '</h3></div>' +
                     '<div class="gen-movie-meta-holder"><ul><li>' + msg.duration + '</li><li><span>' + formatDate(msg.date) + '</span></li></ul></div>' +
-                    '<p class="lfc-card-note">' + msg.pastor + '</p>' +
+                    '<div class="lfc-card-speaker">' +
+                      '<img class="lfc-card-speaker-image" src="' + (msg.speakerImage || msg.image) + '" alt="' + msg.pastor + '">' +
+                      '<p class="lfc-card-note">' + msg.pastor + '</p>' +
+                    '</div>' +
                   '</div>' +
                 '</div>' +
               '</div>' +

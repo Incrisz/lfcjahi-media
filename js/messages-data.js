@@ -19,6 +19,12 @@
       .replace(/^-+|-+$/g, '') || 'message';
   }
 
+  function getFileExtension(url) {
+    var cleanUrl = String(url || '').split('?')[0].split('#')[0];
+    var match = cleanUrl.match(/\.([a-z0-9]+)$/i);
+    return match ? match[1].toLowerCase() : 'mp3';
+  }
+
   function getDefaultDate(item) {
     if (item.mediaDate) {
       return item.mediaDate;
@@ -36,11 +42,12 @@
     var pastor = item.speaker || 'LFC Jahi';
     var date = getDefaultDate(item);
     var thumbnail = item.thumbnailUrl || 'images/background/asset-14.jpeg';
+    var speakerImage = item.speakerImageUrl || thumbnail;
     var category = item.category || 'Audio';
     var mediaUrl = item.mediaUrl || '';
     var safeId = item.id || slugify(title + '-' + date + '-' + index);
-    // Construct download URL using the configured backend URL to ensure HTTPS
-    var downloadUrl = item.id ? (getApiBaseUrl() + '/api/media/' + item.id + '/download') : mediaUrl;
+    var downloadUrl = item.downloadUrl || (item.id ? (getApiBaseUrl() + '/api/media/' + item.id + '/download') : mediaUrl);
+    var downloadFilename = slugify(title) + '.' + getFileExtension(mediaUrl || downloadUrl);
 
     return {
       id: safeId,
@@ -50,8 +57,10 @@
       duration: 'Available for download',
       durationMinutes: 0,
       image: thumbnail,
+      speakerImage: speakerImage,
       audioUrl: mediaUrl,
       downloadUrl: downloadUrl,
+      downloadFilename: downloadFilename,
       scripture: '',
       series: category,
       description: item.description || ''
