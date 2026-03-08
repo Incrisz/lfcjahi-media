@@ -25,6 +25,10 @@
     return match ? match[1].toLowerCase() : 'mp3';
   }
 
+  function buildDownloadBaseName(title, pastor, date) {
+    return slugify([title || 'message', pastor || 'lfc-jahi', date || new Date().toISOString().slice(0, 10)].join(' '));
+  }
+
   function getDefaultDate(item) {
     if (item.mediaDate) {
       return item.mediaDate;
@@ -47,7 +51,7 @@
     var mediaUrl = item.mediaUrl || '';
     var safeId = item.id || slugify(title + '-' + date + '-' + index);
     var downloadUrl = item.downloadUrl || (item.id ? (getApiBaseUrl() + '/api/media/' + item.id + '/download') : mediaUrl);
-    var downloadFilename = slugify(title) + '.' + getFileExtension(mediaUrl || downloadUrl);
+    var downloadFilename = buildDownloadBaseName(title, pastor, date) + '.' + getFileExtension(mediaUrl || downloadUrl);
 
     return {
       id: safeId,

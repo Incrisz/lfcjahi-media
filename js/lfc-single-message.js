@@ -36,6 +36,10 @@
       .replace(/^-+|-+$/g, '') || 'message';
   }
 
+  function buildDownloadBaseName(title, pastor, date) {
+    return slugify([title || 'message', pastor || 'lfc-jahi', date || new Date().toISOString().slice(0, 10)].join(' '));
+  }
+
   function renderEmptyState() {
     if (initialized) {
       return;
@@ -100,7 +104,11 @@
         e.stopPropagation();
         
         var url = currentMessage.downloadUrl || currentMessage.audioUrl;
-        var filename = currentMessage.downloadFilename || (slugify(currentMessage.title) + '.mp3');
+        var filename = currentMessage.downloadFilename || (buildDownloadBaseName(
+          currentMessage.title,
+          currentMessage.pastor,
+          currentMessage.date
+        ) + '.mp3');
         
         if (!url) {
           console.error('No download URL available');
