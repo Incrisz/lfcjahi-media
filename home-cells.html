@@ -248,30 +248,35 @@
       text-decoration: none;
     }
 
-    .lfc-filter-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
+    .lfc-district-filter {
       margin-bottom: 35px;
+      max-width: 420px;
     }
 
-    .lfc-filter-buttons button {
-      padding: 15px 30px;
-      font-size: 17px;
+    .lfc-district-filter label {
+      display: block;
+      font-size: 18px;
       font-weight: 700;
-      border: 3px solid var(--lfc-accent);
-      background-color: transparent;
       color: var(--lfc-accent);
-      border-radius: 10px;
-      cursor: pointer;
+      margin-bottom: 12px;
+    }
+
+    .lfc-district-filter .custom-select {
+      background-color: var(--lfc-surface-alt);
+      border: 3px solid var(--lfc-accent);
+      color: #fff;
+      height: 65px;
+      padding: 0 20px;
+      font-size: 18px;
+      border-radius: 12px;
       transition: all 0.3s ease;
     }
 
-    .lfc-filter-buttons button:hover,
-    .lfc-filter-buttons button.active {
-      background-color: var(--lfc-accent);
+    .lfc-district-filter .custom-select:focus {
+      background-color: var(--lfc-surface-alt);
+      border-color: var(--lfc-accent);
       color: #fff;
-      transform: scale(1.05);
+      box-shadow: 0 0 0 6px rgba(229, 9, 20, 0.15);
     }
 
     .lfc-no-results {
@@ -333,13 +338,17 @@
         font-size: 15px;
       }
 
-      .lfc-filter-buttons {
-        gap: 10px;
+      .lfc-district-filter {
+        max-width: 100%;
       }
 
-      .lfc-filter-buttons button {
-        padding: 12px 20px;
-        font-size: 15px;
+      .lfc-district-filter label {
+        font-size: 16px;
+      }
+
+      .lfc-district-filter .custom-select {
+        height: 58px;
+        font-size: 16px;
       }
     }
   </style>
@@ -427,7 +436,12 @@
             <div class="lfc-search-hint">💡 Start typing to filter home cells</div>
           </div>
 
-          <div id="districtFilters" class="lfc-filter-buttons mb-4"></div>
+          <div class="lfc-district-filter mb-4">
+            <label for="districtFilters">Filter by district</label>
+            <select id="districtFilters" class="custom-select">
+              <option value="">All Districts</option>
+            </select>
+          </div>
         </div>
       </div>
 

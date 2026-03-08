@@ -3,7 +3,7 @@
   var currentFilter = '';
 
   var searchInput = document.getElementById('cellSearch');
-  var filterContainer = document.getElementById('districtFilters');
+  var filterSelect = document.getElementById('districtFilters');
   var container = document.getElementById('cellsContainer');
 
   function escapeHtml(value) {
@@ -62,23 +62,22 @@
   }
 
   function renderFilters() {
-    if (!filterContainer) {
+    if (!filterSelect) {
       return;
     }
 
-    var buttons = [
-      '<button type="button" class="' + (currentFilter ? '' : 'active') + '" data-district="">All Districts</button>'
-    ];
+    var options = ['<option value="">All Districts</option>'];
 
     allCells.forEach(function (district) {
-      buttons.push(
-        '<button type="button" class="' + (currentFilter === district.name ? 'active' : '') + '" data-district="' + escapeHtml(district.name) + '">' +
+      options.push(
+        '<option value="' + escapeHtml(district.name) + '">' +
           escapeHtml(district.name + ' ' + district.num) +
-        '</button>'
+        '</option>'
       );
     });
 
-    filterContainer.innerHTML = buttons.join('');
+    filterSelect.innerHTML = options.join('');
+    filterSelect.value = currentFilter;
   }
 
   function renderCells() {
@@ -178,15 +177,9 @@
     }).join('');
   }
 
-  if (filterContainer) {
-    filterContainer.addEventListener('click', function (event) {
-      var button = event.target.closest('button[data-district]');
-      if (!button) {
-        return;
-      }
-
-      currentFilter = button.getAttribute('data-district') || '';
-      renderFilters();
+  if (filterSelect) {
+    filterSelect.addEventListener('change', function () {
+      currentFilter = filterSelect.value || '';
       renderCells();
     });
   }
