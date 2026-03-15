@@ -61,6 +61,20 @@
     return '<a href="tel:' + escapeHtml(sanitized) + '" style="color: var(--lfc-accent);">' + escapeHtml(value) + '</a>';
   }
 
+  function buildAddressLink(address) {
+    var value = String(address || '').trim();
+
+    if (!value || value === '—') {
+      return escapeHtml(value || '—');
+    }
+
+    return (
+      '<a href="#" class="lfc-map-link" data-address="' + escapeHtml(value) + '" style="color: var(--lfc-accent);">' +
+        escapeHtml(value) +
+      '</a>'
+    );
+  }
+
   function renderFilters() {
     if (!filterSelect) {
       return;
@@ -130,7 +144,7 @@
           return (
             '<tr>' +
               '<td><strong>' + escapeHtml(cell.name) + '</strong></td>' +
-              '<td>' + escapeHtml(cell.address) + '</td>' +
+              '<td>' + buildAddressLink(cell.address) + '</td>' +
               '<td>' + escapeHtml(cell.minister) + '</td>' +
               '<td>' + buildPhoneLink(cell.phone) + '</td>' +
             '</tr>'
@@ -186,6 +200,30 @@
 
   if (searchInput) {
     searchInput.addEventListener('keyup', renderCells);
+  }
+
+  if (container) {
+    container.addEventListener('click', function (event) {
+      var target = event.target;
+      if (!target || !target.classList || !target.classList.contains('lfc-map-link')) {
+        return;
+      }
+
+      event.preventDefault();
+
+      var address = target.getAttribute('data-address') || '';
+      if (!address) {
+        return;
+      }
+
+      var shouldOpen = window.confirm('Locate this address in Google Maps?');
+      if (!shouldOpen) {
+        return;
+      }
+
+      var mapsUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(address);
+      window.open(mapsUrl, '_blank', 'noopener');
+    });
   }
 
   loadDistricts(allCells);
