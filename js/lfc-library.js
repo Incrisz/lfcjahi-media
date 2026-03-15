@@ -27,8 +27,8 @@
   var initialized = false;
   var messages = [];
   var filteredMessages = [];
-  var visibleCount = 10;
-  var pageSize = 10;
+  var visibleCount = 12;
+  var pageSize = 12;
 
   function parseDate(value) {
     return new Date(value + 'T00:00:00');
