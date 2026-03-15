@@ -8,7 +8,7 @@
   var yearFilter = document.getElementById('yearFilter');
   var monthFilter = document.getElementById('monthFilter');
   var pastorFilter = document.getElementById('pastorFilter');
-  var sortFilter = document.getElementById('sortFilter');
+  var serviceFilter = document.getElementById('serviceFilter');
   var searchButton = document.getElementById('searchButton');
   var clearFiltersBtn = document.getElementById('clearFilters');
   var messageGrid = document.getElementById('messageGrid');
@@ -74,22 +74,37 @@
     });
   }
 
-  function sortMessages(items) {
-    var sortValue = sortFilter.value;
+  function normalizeService(value) {
+    var normalized = String(value || '').trim().toLowerCase();
 
+    if (!normalized) {
+      return '';
+    }
+
+    if (normalized === 'sfs' || normalized.indexOf('sunday first') !== -1) {
+      return 'Sunday First Service';
+    }
+    if (normalized === 'sss' || normalized.indexOf('sunday second') !== -1) {
+      return 'Sunday Second Service';
+    }
+    if (normalized === 'sts' || normalized.indexOf('sunday third') !== -1) {
+      return 'Sunday Third Service';
+    }
+    if (normalized === 'wose' || normalized.indexOf('week of spiritual emphasis') !== -1) {
+      return 'Week of Spiritual Emphasis';
+    }
+    if (normalized === 'mws' || normalized.indexOf('midweek') !== -1) {
+      return 'Midweek Service';
+    }
+    if (normalized === 'sp' || normalized.indexOf('special program') !== -1) {
+      return 'Special Program';
+    }
+
+    return 'Other';
+  }
+
+  function sortMessages(items) {
     return items.sort(function (a, b) {
-      if (sortValue === 'oldest') {
-        return parseDate(a.date) - parseDate(b.date);
-      }
-      if (sortValue === 'duration-asc') {
-        return a.durationMinutes - b.durationMinutes;
-      }
-      if (sortValue === 'duration-desc') {
-        return b.durationMinutes - a.durationMinutes;
-      }
-      if (sortValue === 'title') {
-        return a.title.localeCompare(b.title);
-      }
       return parseDate(b.date) - parseDate(a.date);
     });
   }
@@ -115,8 +130,8 @@
                 '</div>' +
                 '<div class="gen-movie-meta-holder">' +
                   '<ul>' +
-                    '<li>' + msg.duration + '</li>' +
                     '<li><span>' + formatDate(msg.date) + '</span></li>' +
+                    '<li>' + msg.duration + '</li>' +
                   '</ul>' +
                 '</div>' +
                 '<div class="lfc-card-speaker">' +
@@ -158,6 +173,7 @@
     var yearValue = yearFilter.value;
     var monthValue = monthFilter.value;
     var pastorValue = pastorFilter.value;
+    var serviceValue = serviceFilter.value;
 
     var filtered = messages.filter(function (msg) {
       var date = parseDate(msg.date);
@@ -168,8 +184,9 @@
       var matchesYear = !yearValue || String(date.getFullYear()) === yearValue;
       var matchesMonth = !monthValue || String(date.getMonth() + 1) === monthValue;
       var matchesPastor = !pastorValue || msg.pastor === pastorValue;
+      var matchesService = !serviceValue || normalizeService(msg.series) === serviceValue;
 
-      return matchesSearch && matchesYear && matchesMonth && matchesPastor;
+      return matchesSearch && matchesYear && matchesMonth && matchesPastor && matchesService;
     });
 
     render(sortMessages(filtered));
@@ -180,6 +197,7 @@
     var defaultPastor = urlParams.get('pastor') || '';
     var defaultYear = urlParams.get('year') || '';
     var defaultMonth = urlParams.get('month') || '';
+    var defaultService = urlParams.get('service') || '';
 
     if (defaultSearch) {
       searchInput.value = defaultSearch;
@@ -193,6 +211,9 @@
     if (defaultMonth) {
       monthFilter.value = defaultMonth;
     }
+    if (defaultService) {
+      serviceFilter.value = defaultService;
+    }
   }
 
   function bindEventsOnce() {
@@ -202,7 +223,7 @@
 
     initialized = true;
 
-    [searchInput, yearFilter, monthFilter, pastorFilter, sortFilter].forEach(function (el) {
+    [searchInput, yearFilter, monthFilter, pastorFilter, serviceFilter].forEach(function (el) {
       el.addEventListener('input', filterAndRender);
       el.addEventListener('change', filterAndRender);
     });
@@ -223,7 +244,7 @@
       yearFilter.value = '';
       monthFilter.value = '';
       pastorFilter.value = '';
-      sortFilter.value = 'newest';
+      serviceFilter.value = '';
       filterAndRender();
     });
   }

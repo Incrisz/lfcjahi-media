@@ -48,6 +48,7 @@
     var thumbnail = item.thumbnailUrl || 'images/background/asset-14.jpeg';
     var speakerImage = item.speakerImageUrl || thumbnail;
     var category = item.category || 'Audio';
+    var service = item.subcategory || '';
     var mediaUrl = item.mediaUrl || '';
     var safeId = item.id || slugify(title + '-' + date + '-' + index);
     var downloadUrl = item.downloadUrl || (item.id ? (getApiBaseUrl() + '/api/media/' + item.id + '/download') : mediaUrl);
@@ -66,7 +67,7 @@
       downloadUrl: downloadUrl,
       downloadFilename: downloadFilename,
       scripture: '',
-      series: category,
+      series: service || category,
       description: item.description || ''
     };
   }

@@ -106,6 +106,12 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
+.gen-carousel-movies-style-1 .gen-movie-contain .gen-movie-info h3 {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+
 .lfc-hidden {
   display: none;
 }

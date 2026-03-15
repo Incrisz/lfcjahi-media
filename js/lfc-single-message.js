@@ -189,7 +189,7 @@
                   '</div>' +
                   '<div class="gen-info-contain">' +
                     '<div class="gen-movie-info"><h3>' + msg.title + '</h3></div>' +
-                    '<div class="gen-movie-meta-holder"><ul><li>' + msg.duration + '</li><li><span>' + formatDate(msg.date) + '</span></li></ul></div>' +
+                    '<div class="gen-movie-meta-holder"><ul><li><span>' + formatDate(msg.date) + '</span></li><li>' + msg.duration + '</li></ul></div>' +
                     '<div class="lfc-card-speaker">' +
                       '<img class="lfc-card-speaker-image" src="' + (msg.speakerImage || msg.image) + '" alt="' + msg.pastor + '">' +
                       '<p class="lfc-card-note">' + msg.pastor + '</p>' +
