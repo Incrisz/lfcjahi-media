@@ -66,7 +66,7 @@
       audioUrl: mediaUrl,
       downloadUrl: downloadUrl,
       downloadFilename: downloadFilename,
-      scripture: '',
+      scripture: item.scripture || 'Matthew 6:33, Romans 10:17',
       series: service || category,
       description: item.description || ''
     };
