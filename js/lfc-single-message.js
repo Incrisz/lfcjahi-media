@@ -103,6 +103,7 @@
     document.title = pageTitle;
 
     setMetaContent('metaDescription', metaDescription);
+    setMetaContent('metaTitle', pageTitle);
     setMetaContent('ogTitle', pageTitle);
     setMetaContent('ogDescription', metaDescription);
     setMetaContent('ogImage', metaImage);
