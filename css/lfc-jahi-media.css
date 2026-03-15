@@ -116,6 +116,12 @@ body {
   display: none;
 }
 
+.lfc-view-more {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
 .lfc-empty {
   background: var(--lfc-surface);
   border: 1px solid var(--lfc-border);

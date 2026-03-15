@@ -14,6 +14,8 @@
   var messageGrid = document.getElementById('messageGrid');
   var resultCount = document.getElementById('resultCount');
   var noResults = document.getElementById('noResults');
+  var viewMoreWrap = document.getElementById('viewMoreWrap');
+  var viewMoreButton = document.getElementById('viewMoreButton');
   var latestMessageLinks = [
     document.getElementById('latestMessageLink'),
     document.getElementById('quickPlayLatestLink'),
@@ -24,6 +26,9 @@
   var urlParams = new URLSearchParams(window.location.search);
   var initialized = false;
   var messages = [];
+  var filteredMessages = [];
+  var visibleCount = 10;
+  var pageSize = 10;
 
   function parseDate(value) {
     return new Date(value + 'T00:00:00');
@@ -146,15 +151,28 @@
     );
   }
 
-  function render(messagesToRender) {
+  function render(messagesToRender, totalCount) {
     messageGrid.innerHTML = messagesToRender.map(cardMarkup).join('');
-    resultCount.textContent = 'Showing ' + messagesToRender.length + ' of ' + messages.length + ' messages';
+    resultCount.textContent = 'Showing ' + messagesToRender.length + ' of ' + totalCount + ' messages';
 
     if (!messagesToRender.length) {
       noResults.classList.remove('lfc-hidden');
     } else {
       noResults.classList.add('lfc-hidden');
     }
+
+    if (viewMoreWrap) {
+      if (messagesToRender.length < totalCount) {
+        viewMoreWrap.classList.remove('lfc-hidden');
+      } else {
+        viewMoreWrap.classList.add('lfc-hidden');
+      }
+    }
+  }
+
+  function renderVisible() {
+    var slice = filteredMessages.slice(0, visibleCount);
+    render(slice, filteredMessages.length);
   }
 
   function updateLatestLinks() {
@@ -189,7 +207,9 @@
       return matchesSearch && matchesYear && matchesMonth && matchesPastor && matchesService;
     });
 
-    render(sortMessages(filtered));
+    filteredMessages = sortMessages(filtered);
+    visibleCount = pageSize;
+    renderVisible();
   }
 
   function applyQueryDefaults() {
@@ -247,6 +267,13 @@
       serviceFilter.value = '';
       filterAndRender();
     });
+
+    if (viewMoreButton) {
+      viewMoreButton.addEventListener('click', function () {
+        visibleCount = Math.min(filteredMessages.length, visibleCount + pageSize);
+        renderVisible();
+      });
+    }
   }
 
   function initLibrary() {
