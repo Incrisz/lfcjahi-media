@@ -59,7 +59,7 @@
       title: title,
       pastor: pastor,
       date: date,
-      duration: 'Available for download',
+      duration: service || 'Available for download',
       durationMinutes: 0,
       image: thumbnail,
       speakerImage: speakerImage,
