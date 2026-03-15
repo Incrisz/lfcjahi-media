@@ -85,10 +85,10 @@
     setText('metaPastor', currentMessage.pastor);
     setText('messageDate', formatDate(currentMessage.date));
     setText('metaDate', formatDate(currentMessage.date));
-    setText('messageDuration', currentMessage.duration);
-    setText('metaDuration', currentMessage.duration);
+    setText('messageDuration', currentMessage.series || 'Available for download');
+    setText('metaDuration', currentMessage.series || 'Available for download');
     setText('messageScripture', currentMessage.scripture || '-');
-    setText('messageSeries', 'Available for download');
+    setText('messageSeries', currentMessage.series || '-');
     setText('messageDescription', currentMessage.description || 'No description available.');
 
     setAttr('messageImage', 'src', currentMessage.image);
