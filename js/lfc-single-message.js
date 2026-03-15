@@ -29,6 +29,13 @@
     }
   }
 
+  function setMetaContent(id, value) {
+    var el = document.getElementById(id);
+    if (el) {
+      el.setAttribute('content', value);
+    }
+  }
+
   function slugify(value) {
     return String(value || '')
       .toLowerCase()
@@ -77,14 +84,39 @@
 
     initialized = true;
 
-    setText('pageTitle', currentMessage.title + ' | LFC-JAHI MEDIA');
-    document.title = currentMessage.title + ' | LFC-JAHI MEDIA';
+    var pageTitle = currentMessage.title + ' | LFC-JAHI MEDIA';
+    var serviceLabel = currentMessage.series || 'Service';
+    var formattedDate = formatDate(currentMessage.date);
+    var detailUrl = window.location.origin + window.location.pathname + '?id=' + encodeURIComponent(currentMessage.id);
+    var metaImage = currentMessage.image || 'https://lfcjahi.com/images/og-image.jpg';
+    var metaDescription =
+      currentMessage.title +
+      ' - ' +
+      serviceLabel +
+      ' by ' +
+      currentMessage.pastor +
+      ' on ' +
+      formattedDate +
+      '. Listen and download the message from LFC Jahi.';
+
+    setText('pageTitle', pageTitle);
+    document.title = pageTitle;
+
+    setMetaContent('metaDescription', metaDescription);
+    setMetaContent('ogTitle', pageTitle);
+    setMetaContent('ogDescription', metaDescription);
+    setMetaContent('ogImage', metaImage);
+    setMetaContent('ogUrl', detailUrl);
+    setMetaContent('twitterTitle', pageTitle);
+    setMetaContent('twitterDescription', metaDescription);
+    setMetaContent('twitterImage', metaImage);
+    setMetaContent('twitterUrl', detailUrl);
 
     setText('messageTitle', currentMessage.title);
     setText('messagePastorChip', currentMessage.pastor);
     setText('metaPastor', currentMessage.pastor);
-    setText('messageDate', formatDate(currentMessage.date));
-    setText('metaDate', formatDate(currentMessage.date));
+    setText('messageDate', formattedDate);
+    setText('metaDate', formattedDate);
     setText('messageDuration', currentMessage.series || 'Available for download');
     setText('metaDuration', currentMessage.series || 'Available for download');
     setText('messageScripture', currentMessage.scripture || '-');
