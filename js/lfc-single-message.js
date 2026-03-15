@@ -88,7 +88,7 @@
     setText('messageDuration', currentMessage.duration);
     setText('metaDuration', currentMessage.duration);
     setText('messageScripture', currentMessage.scripture || '-');
-    setText('messageSeries', currentMessage.series || '-');
+    setText('messageSeries', 'Available for download');
     setText('messageDescription', currentMessage.description || 'No description available.');
 
     setAttr('messageImage', 'src', currentMessage.image);
