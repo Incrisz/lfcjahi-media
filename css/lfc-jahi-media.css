@@ -112,6 +112,14 @@ body {
   text-overflow: unset;
 }
 
+@media (max-width: 991px) {
+  .gen-carousel-movies-style-1 .gen-movie-contain .gen-movie-meta-holder ul {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+}
+
 .lfc-hidden {
   display: none;
 }
