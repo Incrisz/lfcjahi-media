@@ -5,6 +5,11 @@
   var searchInput = document.getElementById('cellSearch');
   var filterSelect = document.getElementById('districtFilters');
   var container = document.getElementById('cellsContainer');
+  var viewMoreWrap = document.getElementById('homeCellsViewMoreWrap');
+  var viewMoreButton = document.getElementById('homeCellsViewMoreButton');
+  var filteredDistricts = [];
+  var visibleCount = 3;
+  var pageSize = 3;
 
   function escapeHtml(value) {
     return String(value || '')
@@ -135,10 +140,20 @@
 
     if (!filtered.length) {
       container.innerHTML = '<div class="lfc-no-results"><h5>No Home Cells Found</h5><p>Try adjusting your search or filter criteria</p></div>';
+      if (viewMoreWrap) {
+        viewMoreWrap.classList.add('lfc-hidden');
+      }
       return;
     }
 
-    container.innerHTML = filtered.map(function (district) {
+    filteredDistricts = filtered;
+    if (visibleCount > filteredDistricts.length) {
+      visibleCount = filteredDistricts.length;
+    }
+
+    var visibleDistricts = filteredDistricts.slice(0, visibleCount);
+
+    container.innerHTML = visibleDistricts.map(function (district) {
       var zonesHtml = district.zones.map(function (zone) {
         var cellsHtml = zone.cells.map(function (cell) {
           return (
@@ -189,17 +204,36 @@
         '</div>'
       );
     }).join('');
+
+    if (viewMoreWrap) {
+      if (visibleDistricts.length < filteredDistricts.length) {
+        viewMoreWrap.classList.remove('lfc-hidden');
+      } else {
+        viewMoreWrap.classList.add('lfc-hidden');
+      }
+    }
   }
 
   if (filterSelect) {
     filterSelect.addEventListener('change', function () {
       currentFilter = filterSelect.value || '';
+      visibleCount = pageSize;
       renderCells();
     });
   }
 
   if (searchInput) {
-    searchInput.addEventListener('keyup', renderCells);
+    searchInput.addEventListener('keyup', function () {
+      visibleCount = pageSize;
+      renderCells();
+    });
+  }
+
+  if (viewMoreButton) {
+    viewMoreButton.addEventListener('click', function () {
+      visibleCount = Math.min(filteredDistricts.length, visibleCount + pageSize);
+      renderCells();
+    });
   }
 
   if (container) {

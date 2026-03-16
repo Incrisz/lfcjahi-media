@@ -176,7 +176,9 @@
   }
 
   function updateLatestLinks() {
-    var latestMessage = messages[0];
+    var latestMessage = messages.slice().sort(function (a, b) {
+      return parseDate(b.date) - parseDate(a.date);
+    })[0];
     if (!latestMessage) {
       return;
     }
