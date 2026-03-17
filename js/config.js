@@ -1,3 +1,3 @@
 window.lfcRuntimeConfig = {
-  backendUrl: "https://b.bmp.com.ng"
+  backendUrl: "https://api.lfcjahi.com"
 };
