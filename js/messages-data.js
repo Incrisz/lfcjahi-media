@@ -52,6 +52,7 @@
     var mediaUrl = item.mediaUrl || '';
     var safeId = item.id || slugify(title + '-' + date + '-' + index);
     var downloadUrl = item.downloadUrl || (item.id ? (getApiBaseUrl() + '/api/media/' + item.id + '/download') : mediaUrl);
+    var shareUrl = item.shareUrl || (item.id ? (getApiBaseUrl() + '/messages/' + item.id) : (window.location.origin + '/single-message.html?id=' + encodeURIComponent(safeId)));
     var downloadFilename = buildDownloadBaseName(title, pastor, date) + '.' + getFileExtension(mediaUrl || downloadUrl);
 
     return {
@@ -65,6 +66,7 @@
       speakerImage: speakerImage,
       audioUrl: mediaUrl,
       downloadUrl: downloadUrl,
+      shareUrl: shareUrl,
       downloadFilename: downloadFilename,
       scripture: item.scripture || 'Matthew 6:33, Romans 10:17',
       series: service || category,

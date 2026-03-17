@@ -87,7 +87,7 @@
     var pageTitle = currentMessage.title + ' | LFC-JAHI MEDIA';
     var serviceLabel = currentMessage.series || 'Service';
     var formattedDate = formatDate(currentMessage.date);
-    var detailUrl = window.location.origin + window.location.pathname + '?id=' + encodeURIComponent(currentMessage.id);
+    var detailUrl = currentMessage.shareUrl || (window.location.origin + window.location.pathname + '?id=' + encodeURIComponent(currentMessage.id));
     var metaImage = currentMessage.image || 'https://lfcjahi.com/images/og-image.jpg';
     var metaDescription =
       currentMessage.title +
@@ -187,7 +187,7 @@
     if (shareBtn && !shareBtn.dataset.bound) {
       shareBtn.dataset.bound = 'true';
       shareBtn.addEventListener('click', function () {
-        var url = window.location.origin + window.location.pathname + '?id=' + encodeURIComponent(currentMessage.id);
+        var url = currentMessage.shareUrl || (window.location.origin + window.location.pathname + '?id=' + encodeURIComponent(currentMessage.id));
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(url).then(function () {
             shareBtn.innerHTML = '<span class=\"text\">Link Copied</span>';
