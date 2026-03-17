@@ -84,7 +84,7 @@
 
     initialized = true;
 
-    var pageTitle = currentMessage.title + ' | LFC-JAHI MEDIA';
+    var pageTitle = [currentMessage.title, currentMessage.pastor].filter(Boolean).join(' | ') || currentMessage.title;
     var serviceLabel = currentMessage.series || 'Service';
     var formattedDate = formatDate(currentMessage.date);
     var detailUrl = currentMessage.shareUrl || (window.location.origin + window.location.pathname + '?id=' + encodeURIComponent(currentMessage.id));
@@ -104,6 +104,7 @@
 
     setMetaContent('metaDescription', metaDescription);
     setMetaContent('metaTitle', pageTitle);
+    setMetaContent('metaImage', metaImage);
     setMetaContent('ogTitle', pageTitle);
     setMetaContent('ogDescription', metaDescription);
     setMetaContent('ogImage', metaImage);
