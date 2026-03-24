@@ -990,3 +990,160 @@ html[data-dark-mode="true"] .dark-mode-toggle:hover {
 html[data-dark-mode="true"] .dark-mode-toggle:hover i {
   color: white !important;
 }
+
+html:not([data-dark-mode="true"]) .lfc-login-panel {
+  background: linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
+  border-color: rgba(255, 213, 74, 0.45);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+html:not([data-dark-mode="true"]) .lfc-login-panel h4,
+html:not([data-dark-mode="true"]) .lfc-login-panel p {
+  color: #2b2b2b !important;
+}
+
+.lfc-menu-login {
+  line-height: normal !important;
+  display: flex;
+  align-items: center;
+  padding: 22px 0 22px 18px;
+}
+
+.lfc-menu-login > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 10px 24px !important;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffd54a 0%, #ffea94 100%);
+  color: #111 !important;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 14px 28px rgba(255, 213, 74, 0.2);
+}
+
+.lfc-menu-login > a:hover,
+.lfc-menu-login > a:focus {
+  color: #111 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(255, 213, 74, 0.28);
+}
+
+header#gen-header.gen-header-style-1 .gen-bottom-header .navbar .navbar-nav li.lfc-menu-login.active > a {
+  color: #111 !important;
+  background: linear-gradient(135deg, #ffe783 0%, #fff1b7 100%);
+}
+
+.lfc-login-hero {
+  position: relative;
+  background: linear-gradient(120deg, rgba(0, 0, 0, 0.84) 20%, rgba(0, 0, 0, 0.46) 100%),
+    url('../images/background/asset-41.jpg') center/cover no-repeat;
+  padding: 150px 0 90px;
+}
+
+.lfc-login-wrap {
+  margin-top: -48px;
+}
+
+.lfc-login-panel {
+  background: linear-gradient(180deg, rgba(26, 26, 26, 0.98) 0%, rgba(17, 17, 17, 0.98) 100%);
+  border: 1px solid rgba(255, 213, 74, 0.16);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.28);
+}
+
+.lfc-login-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.lfc-role-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 68px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffd54a 0%, #ffea94 100%);
+  color: #111;
+  font-family: var(--title-fonts);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 16px 22px;
+  cursor: pointer;
+  box-shadow: 0 16px 32px rgba(255, 213, 74, 0.16);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  text-decoration: none !important;
+}
+
+.lfc-role-button:hover,
+.lfc-role-button:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 36px rgba(255, 213, 74, 0.24);
+  filter: brightness(1.02);
+}
+
+.lfc-login-note {
+  margin-top: 24px;
+  margin-bottom: 0;
+  color: #d2d2d2;
+}
+
+@media (max-width: 1023px) {
+  .lfc-menu-login {
+    padding: 14px 0 4px;
+  }
+
+  .lfc-menu-login > a {
+    width: 100%;
+  }
+}
+
+@media (max-width: 991px) {
+  #gen-main-menu .menu-item.lfc-menu-login > a,
+  .navbar-nav .menu-item.lfc-menu-login > a,
+  .gen-menu-contain .lfc-menu-login > a {
+    background: linear-gradient(135deg, #ffd54a 0%, #ffea94 100%) !important;
+    background-color: #ffd54a !important;
+    color: #111 !important;
+    border-radius: 999px;
+    margin: 6px 15px 12px;
+    width: calc(100% - 30px);
+    text-align: center;
+    padding: 14px 24px !important;
+    box-shadow: 0 14px 28px rgba(255, 213, 74, 0.2);
+  }
+
+  #gen-main-menu .menu-item.lfc-menu-login > a:hover,
+  #gen-main-menu .menu-item.lfc-menu-login > a:focus,
+  .navbar-nav .menu-item.lfc-menu-login > a:hover,
+  .navbar-nav .menu-item.lfc-menu-login > a:focus,
+  .gen-menu-contain .lfc-menu-login > a:hover,
+  .gen-menu-contain .lfc-menu-login > a:focus {
+    background: linear-gradient(135deg, #ffe783 0%, #fff1b7 100%) !important;
+    background-color: #ffe783 !important;
+    color: #111 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .lfc-login-hero {
+    padding: 135px 0 70px;
+  }
+
+  .lfc-login-panel {
+    padding: 24px 18px;
+    border-radius: 18px;
+  }
+
+  .lfc-login-grid {
+    grid-template-columns: 1fr;
+  }
+}

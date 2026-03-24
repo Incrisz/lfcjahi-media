@@ -196,6 +196,59 @@
       font-size: 24px;
     }
 
+    .lfc-host-cta {
+      margin-bottom: 18px;
+    }
+
+    .lfc-host-cta .gen-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      border-radius: 999px;
+      padding: 12px 28px;
+      box-shadow: 0 14px 28px rgba(229, 9, 20, 0.2);
+    }
+
+    .lfc-host-modal .modal-content {
+      background: linear-gradient(180deg, rgba(26, 26, 26, 0.98) 0%, rgba(17, 17, 17, 0.98) 100%);
+      border: 1px solid rgba(229, 9, 20, 0.3);
+      border-radius: 20px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .lfc-host-modal .modal-header,
+    .lfc-host-modal .modal-footer {
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .lfc-host-modal .modal-title,
+    .lfc-host-modal .modal-body {
+      color: #ffffff;
+    }
+
+    .lfc-host-modal .close {
+      color: #ffffff;
+      opacity: 0.85;
+      text-shadow: none;
+    }
+
+    .lfc-host-modal .modal-body {
+      font-size: 19px;
+      line-height: 1.7;
+    }
+
+    .lfc-host-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .lfc-host-actions .gen-button {
+      min-width: 120px;
+      justify-content: center;
+    }
+
     .lfc-cells-table {
       margin-top: 25px;
     }
@@ -380,6 +433,7 @@
                     <li class="menu-item"><a href="https://docs.google.com/forms/d/e/1FAIpQLScrp8-yWV6-2sdUqhCDW-gb8A71Qx-LMkO1PsOZ9Dk3TgnR2w/viewform" target="_blank" rel="noopener">Winning-Care</a></li>
                     <li class="menu-item"><a href="https://docs.google.com/forms/d/e/1FAIpQLSc4xRfQF7PUOmDug_fk3lOZIaG7EFXZcp1viZLC9wHixdjrRw/viewform" target="_blank" rel="noopener">Follow-Up</a></li>
                     <li class="menu-item"><a href="index.html#about-ministry">About</a></li>
+                    <li class="menu-item lfc-menu-login"><a href="login.html">Login</a></li>
                   </ul>
                 </div>
               </div>
@@ -429,6 +483,11 @@
     <div class="container">
       <div class="row align-items-center mb-4">
         <div class="col-md-12">
+          <div class="lfc-host-cta">
+            <button class="gen-button" type="button" data-toggle="modal" data-target="#becomeHostModal">
+              <span class="text">Become a Host</span>
+            </button>
+          </div>
           <h2 class="gen-heading-title">📍 Find Your Home Cell</h2>
           
           <div class="lfc-search-box mb-4">
@@ -458,6 +517,32 @@
       </div>
     </div>
   </section>
+
+  <div class="modal fade lfc-host-modal" id="becomeHostModal" tabindex="-1" role="dialog" aria-labelledby="becomeHostModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="becomeHostModalLabel">Become a Host</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Do you want to make your house available for homecell service?
+        </div>
+        <div class="modal-footer">
+          <div class="lfc-host-actions">
+            <button type="button" class="gen-button gen-button-flat" data-dismiss="modal">
+              <span class="text">No</span>
+            </button>
+            <a href="http://lfcjahi.com" class="gen-button">
+              <span class="text">Yes</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <section class="lfc-single-card-section gen-section-padding-3">
     <div class="container">
